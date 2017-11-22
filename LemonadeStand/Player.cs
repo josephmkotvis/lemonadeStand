@@ -8,5 +8,14 @@ namespace LemonadeStand
 {
     class Player
     {
+        // member variables
+        string name;
+        Inventory inv;
+        Item items; // need to make one for each item
+        Money money;
+        //constructor
+
+        //methods
+
     }
 }

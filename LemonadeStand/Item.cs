@@ -8,5 +8,12 @@ namespace LemonadeStand
 {
     class Item
     {
+        // member variables
+
+        //constructor
+
+        //methods
+
+
     }
 }
