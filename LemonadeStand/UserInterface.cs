@@ -42,22 +42,19 @@ namespace LemonadeStand
         {
             // Displays what you can buy in store
         }
-        void DisplayItem0Bundles()
+        void DisplayItemBundles()
         {
             // Displays the bundles you can buy associated with price
         }
-        void DisplayItem1Bundles()
+        void DisplayItemBundle1()
         {
-            // Display bundles you can buy associated with price
+            // Displays the first bundle available
         }
-        void DisplayItem2Bundles()
+        void DisplayItemBundle2()
         {
-            // Displays bundles you can buy associated with price
+            //Displays the second bundle available.
         }
-        void DisplayItem3Bundles()
-        {
-            // Displays bundles you can buy associated with price
-        }
+
         void DisplayDay()
         {
             //Displays what day it is
