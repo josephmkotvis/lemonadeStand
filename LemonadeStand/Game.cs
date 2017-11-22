@@ -7,6 +7,24 @@ using System.Threading.Tasks;
 namespace LemonadeStand
 {
     class Game
-    {
+    {  // member variables
+
+        //constructor
+
+        //methods
+
+        void RunGame()
+        {
+            // starts the game before  round loop behins 
+        }
+        void RunRound()
+        {
+            // runs the lemonade stand days
+        }
+        void WinningConditon()
+        {
+            // when it hits game.days (Amount of days they chose)
+        }
+       
     }
 }
