@@ -42,19 +42,19 @@ namespace LemonadeStand
         {
             // Displays what you can buy in store
         }
-        void DisplayCupBundles()
+        void DisplayItem0Bundles()
         {
             // Displays the bundles you can buy associated with price
         }
-        void DisplayLemonBundles()
+        void DisplayItem1Bundles()
         {
             // Display bundles you can buy associated with price
         }
-        void DisplaySugarBundles()
+        void DisplayItem2Bundles()
         {
             // Displays bundles you can buy associated with price
         }
-        void DisplayIceBundles()
+        void DisplayItem3Bundles()
         {
             // Displays bundles you can buy associated with price
         }
@@ -114,17 +114,13 @@ namespace LemonadeStand
         {
             //Display options aftergame
         }
-        void DisplayIceMelting()
+        void DisplayItemLost()
         {
-            //Displays that you lost ice due to it melting
+            //Displays that you lost items.
         }
-        void DisplayLemonsRotting()
+        void DisplayItemGained()
         {
-            //Displays that you lost lems due to it rotting
-        }
-        void DisplaySugarDropping()
-        {
-            //Displays that you lost sugar due to it being dropped
+            //Displays tha you gained items.
         }
         void DisplayDaysLeft()
         {

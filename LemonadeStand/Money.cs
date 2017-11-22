@@ -8,6 +8,6 @@ namespace LemonadeStand
 {
     class Money
     {
-
+        decimal Amount;
     }
 }
