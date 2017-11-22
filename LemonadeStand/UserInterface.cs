@@ -110,6 +110,33 @@ namespace LemonadeStand
         {
             //Display options aftergame
         }
-
+        void DisplayIceMelting()
+        {
+            //Displays that you lost ice due to it melting
+        }
+        void DisplayLemonsRotting()
+        {
+            //Displays that you lost lems due to it rotting
+        }
+        void DisplaySugarDropping()
+        {
+            //Displays that you lost sugar due to it being dropped
+        }
+        void DisplayDaysLeft()
+        {
+            // Displays how many days are left in the game
+        }
+        void DisplayTips()
+        {
+            //Displays if anyoen tipped
+        }
+        void DisplayCustomerSatisfaction()
+        {
+            //Displays how many customers were satisfied
+        }
+        void DisplaysReputation()
+        {
+            //Displays the amount of people that could be buying compared to how many did
+        }
     }
 }
