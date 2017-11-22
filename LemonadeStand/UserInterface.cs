@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Program
+    class UserInterface
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }
