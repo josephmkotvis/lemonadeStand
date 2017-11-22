@@ -18,6 +18,10 @@ namespace LemonadeStand
         {
             // Asks how many days they want to play
         }
+        void DisplayNameOption()
+        {
+            //Asks what you want your name to be
+        }
         void GetUserInput()
         {
             Console.ReadLine();
