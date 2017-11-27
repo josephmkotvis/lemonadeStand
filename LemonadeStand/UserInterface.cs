@@ -41,7 +41,7 @@ namespace LemonadeStand
         void DisplayStoreOptions()
         {
             // Displays what you can buy in store
-        }
+        } 
         void DisplayItemBundles()
         {
             // Displays the bundles you can buy associated with price
