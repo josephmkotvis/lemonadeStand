@@ -21,7 +21,7 @@ namespace LemonadeStand
         {
             // runs the lemonade stand days
         }
-        void WinningConditon()
+        void CheckWinningConditon()
         {
             // when it hits game.days (Amount of days they chose)
         }

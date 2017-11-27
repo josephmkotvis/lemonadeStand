@@ -9,18 +9,39 @@ namespace LemonadeStand
     class Inventory
     {
         string owner;
+        Lemon lemon;
+        Sugar sugar;
+        Ice ice;
+        Cup cup;
+        double lemonAmount = 0;
+        double sugarAmount = 0;
+        double iceAmount = 0;
+        double cupAmount = 0;
 
         public Inventory(string owner)
         {
             this.owner = owner;
         }
-        void InventoryItems()
+        void GetInventoryInfos()
         {
-        List<Item> inventoryItems = new List<Item>();
-        inventoryItems.Add(new Item("Cup", 3, 3, 3, 3, 10, 25, 50));
-        inventoryItems.Add(new Item("Lemon", 4, 4, 4, 4, 10, 25, 50));
-        inventoryItems.Add(new Item("Sugar", 2, 2, 2, 2, 10, 25, 50));
-        inventoryItems.Add(new Item("Ice", 1, 1, 1, 1, 10, 25, 50));
+            List<Item> inventoryItems = new List<Item>
+            {
+                lemon,
+                sugar,
+                ice,
+                cup
+            };
+        }
+        void GetInventoryAmounts()
+        {
+            List<double> inventoryItemsAmounts = new List<double>
+            {
+                lemonAmount,
+                sugarAmount,
+                iceAmount,
+                cupAmount,
+
+            };
         }
     }
 }

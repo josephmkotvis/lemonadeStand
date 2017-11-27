@@ -11,7 +11,6 @@ namespace LemonadeStand
         // member variables
         string name;
         Inventory inv;
-        Money money;
 
 
         //constructor

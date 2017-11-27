@@ -14,25 +14,15 @@ namespace LemonadeStand
         public decimal bundleCost1;
         public decimal bundleCost2;
         public decimal bundleCost3;
-        public double bundleAmount1;
-        public double bundleAmount2;
-        public double bundleAmount3;
+        public decimal bundleAmount1 = 10;
+        public decimal bundleAmount2 = 25;
+        public decimal bundleAmount3 = 50;
+        public decimal bundle1Discount = 0.1M;
+        public decimal bundle2Discount = 0.2M;
+        public decimal bundle3Discount = 0.4M;
+
         // will be a string of objects
         //constructor
-        public Item (string name, decimal cost, decimal bundleCost1, decimal bundleCost2, decimal bundleCost3, double bundleAmount1, double bundleAmount2, double bundleAmount3)
-        {
-            this.name = name;
-            this.cost = cost;
-            this.bundleCost1 = bundleCost1;
-            this.bundleCost2 = bundleCost2;
-            this.bundleCost3 = bundleCost3;
-            this.bundleAmount1 = bundleAmount1;
-            this.bundleAmount2 = bundleAmount2;
-            this.bundleAmount3 = bundleAmount3;
-        }
-
         //methods
-
-
     }
 }
