@@ -48,6 +48,7 @@
     <Compile Include="Customer.cs" />
     <Compile Include="Day.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="Hail.cs" />
     <Compile Include="Ice.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="Item.cs" />
