@@ -23,8 +23,5 @@ namespace LemonadeStand
               cup
             };
         }
-
-
-
     }
 }

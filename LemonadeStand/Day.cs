@@ -8,5 +8,13 @@ namespace LemonadeStand
 {
     class Day
     {
-    }
+        List<int> Days = new List<int>();
+        void ListDays()
+        {
+            for (int day = 0; day < 100; day++)
+            {
+                Days.Add(day);
+            }
+        }
+    } 
 }

@@ -16,6 +16,12 @@ namespace LemonadeStand
         string dislikedWindSpeed;
         string favoritePrecipitation;
         string dislikedPrecipitation;
+        string favoriteObject1Amount;
+        string favoriteObject2Amount;
+        string favoriteObject3Amount;
+        string dislikedObject1Amount;
+        string dislikedObject2Amount;
+        string dislikedObject3Amount;
 
     }
 }
