@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Breezy.cs" />
+    <Compile Include="BussinessPerson.cs" />
     <Compile Include="Cloudy.cs" />
     <Compile Include="Cup.cs" />
     <Compile Include="Customer.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Snow.cs" />
     <Compile Include="Store.cs" />
     <Compile Include="Stormy.cs" />
+    <Compile Include="Student.cs" />
     <Compile Include="Sugar.cs" />
     <Compile Include="Sunny.cs" />
     <Compile Include="ThunderSnow.cs" />
