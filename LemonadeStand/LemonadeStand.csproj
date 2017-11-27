@@ -47,7 +47,7 @@
     <Compile Include="Breezy.cs" />
     <Compile Include="BussinessPerson.cs" />
     <Compile Include="Cloudy.cs" />
-    <Compile Include="ConstructioWorker.cs" />
+    <Compile Include="ConstructionWorker.cs" />
     <Compile Include="Cup.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Day.cs" />
