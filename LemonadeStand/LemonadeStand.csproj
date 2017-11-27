@@ -64,6 +64,7 @@
     <Compile Include="Student.cs" />
     <Compile Include="Sugar.cs" />
     <Compile Include="Sunny.cs" />
+    <Compile Include="Teacher.cs" />
     <Compile Include="ThunderSnow.cs" />
     <Compile Include="UserInterface.cs" />
     <Compile Include="Weather.cs" />
