@@ -11,7 +11,6 @@ namespace LemonadeStand
         double airTemperature;
         double humidity;
         double windSpeed;
-        double cloudCoverage;
         double precipitation;
 
 
