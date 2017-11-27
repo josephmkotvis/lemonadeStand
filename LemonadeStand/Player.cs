@@ -14,6 +14,11 @@ namespace LemonadeStand
 
 
         //constructor
+        public Player(string name)
+        {
+            this.name = name;
+        }
+
 
         //methods
 

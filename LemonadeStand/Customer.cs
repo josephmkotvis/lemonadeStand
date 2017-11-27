@@ -8,6 +8,10 @@ namespace LemonadeStand
 {
     class Customer
     {
-       
+        string favoriteWeather;
+        string dislikedWeather;
+        string favoriteTemp;
+        string dislikedTemp;
+
     }
 }

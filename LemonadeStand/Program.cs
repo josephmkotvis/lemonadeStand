@@ -10,6 +10,7 @@ namespace LemonadeStand
     {
         public void Main(string[] args)
         {
+            Player Player1 = new Player("Player1");
             Inventory Inventory1 = new Inventory("Player1");
         }
     }
