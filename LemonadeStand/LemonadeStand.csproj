@@ -55,6 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Store.cs" />
     <Compile Include="Sugar.cs" />
+    <Compile Include="Sunny.cs" />
     <Compile Include="UserInterface.cs" />
     <Compile Include="Weather.cs" />
   </ItemGroup>

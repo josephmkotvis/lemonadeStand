@@ -6,14 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Weather
+    class Sunny : Weather
     {
-        double airTemperature;
-        double humidity;
-        double windSpeed;
-        double cloudCoverage;
-        double precipitation;
-
-
     }
 }
