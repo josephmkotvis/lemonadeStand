@@ -13,6 +13,5 @@ namespace LemonadeStand
             name = "Lemon";
             cost = 4;
         }
-      
     }
 }

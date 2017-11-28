@@ -15,7 +15,7 @@ namespace LemonadeStand
             Sugar sugar = new Sugar();
             Cup cup = new Cup();
             Ice ice = new Ice();
-            Inventory Inventory1 = new Inventory("Player1");
+            Inventory Inventory1 = new Inventory("Player1", lemon, sugar, cup, ice);
             Store store = new Store(lemon, sugar, cup, ice);
             Console.ReadKey();
         }

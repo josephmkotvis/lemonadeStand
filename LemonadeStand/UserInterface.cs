@@ -27,11 +27,11 @@ namespace LemonadeStand
         }
         public void DisplayFaq()
         {
-            // Displays rules and how to play
+            Console.WriteLine("This is how to play blah blah");
         }
         public void DisplayInventory()
         {
-            // Shows items in inventory (Lemons,Sugar,Ice & Cups)
+            Console.WriteLine("Here is your inventory" + );
         }
         public void DisplayMoney()
         {
