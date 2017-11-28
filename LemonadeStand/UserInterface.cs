@@ -9,131 +9,135 @@ namespace LemonadeStand
     class UserInterface
     {
         // member variables
+        public string userInput;
+        Player player1;
 
         // constructor
 
         //methods
 
-        void DisplayDayOptions()
+        public void DisplayNameOption()
         {
-            // Asks how many days they want to play
+            Console.WriteLine("What is " + player1.name + "'s name?");
         }
-        void DisplayNameOption()
+        public string GetUserInput()
         {
-            //Asks what you want your name to be
+            userInput = Console.ReadLine();
+            return userInput;
         }
-        void GetUserInput()
-        {
-            Console.ReadLine();
-        }
-        void DisplayFaq()
+        public void DisplayFaq()
         {
             // Displays rules and how to play
         }
-        void DisplayInventory()
+        public void DisplayInventory()
         {
             // Shows items in inventory (Lemons,Sugar,Ice & Cups)
         }
-        void DisplayMoney()
+        public void DisplayMoney()
         {
             // Displays money in wallet
         }
-        void DisplayStoreOptions()
+        public void DisplayStoreOptions()
         {
             // Displays what you can buy in store
         } 
-        void DisplayItemBundles()
+        public void DisplayItemBundles()
         {
             // Displays the bundles you can buy associated with price
         }
-        void DisplayItemBundle1()
+        public void DisplayItemBundle1()
         {
             // Displays the first bundle available
         }
-        void DisplayItemBundle2()
+        public void DisplayItemBundle2()
         {
             //Displays the second bundle available.
         }
 
-        void DisplayDay()
+        public void DisplayDay()
         {
             //Displays what day it is
         }
-        void DisplayWeatherToday()
+        public void DisplayWeatherToday()
         {
             //Displays what the weather is that day
         }
-        void DisplayWeatherWeek()
+        public void DisplayWeatherWeek()
         {
             //Displays what the weather is that week
         }
-        void DisplayRecipeOptions()
+        public void DisplayRecipeOptions()
         {
             // Displays your option to toggle lemons,sugar and ice.
         }
-        void DisplayCostOptions()
+        public void DisplayCostOptions()
         {
             //Display options to change the cost of your money
         }
-        void DisplayRoundStart()
+        public void DisplayRoundStart()
         {
             //Say your begining round with recipe x and $y, weather is z. 
         }
-        void DisplayRoundResults()
+        public void DisplayRoundResults()
         {
             // Display the results of the round
         }
-        void DisplaySalesResults()
+        public void DisplaySalesResults()
         {
             //Display how many cups were sold.
         }
-        void DisplayInventoryChanges()
+        public void DisplayInventoryChanges()
         {
             // Display how much the inventory change
         }
-        void DisplayMoneyChanges()
+        public void DisplayMoneyChanges()
         {
             // Display how the change in money
         }
-        void DisplayCustomerReviews()
+        public void DisplayCustomerReviews()
         {
             // Will display the reviews of your lemonade at the end of the game
         }
-        void DisplayRoundScore()
+        public void DisplayRoundScore()
         {
             // Displays how well you did based on amount of cups sold.
         }
-        void DisplayCustomerAmount()
+        public void DisplayCustomerAmount()
         {
             //Displays how many customers there were
         }
-        void DisplayAfterGameOptions()
+        public void DisplayAfterGameOptions()
         {
             //Display options aftergame
         }
-        void DisplayItemLost()
+        public void DisplayItemLost()
         {
             //Displays that you lost items.
         }
-        void DisplayItemGained()
+        public void DisplayItemGained()
         {
             //Displays tha you gained items.
         }
-        void DisplayDaysLeft()
+        public void DisplayDaysLeft()
         {
             // Displays how many days are left in the game
         }
-        void DisplayTips()
+        public void DisplayTips()
         {
             //Displays if anyoen tipped
         }
-        void DisplayCustomerSatisfaction()
+        public void DisplayCustomerSatisfaction()
         {
             //Displays how many customers were satisfied
         }
-        void DisplaysReputation()
+        public void DisplaysReputation()
         {
             //Displays the amount of people that could be buying compared to how many did
+        }
+        public void DisplayEndDateOption()
+        {
+            Console.WriteLine("How many days would you like to play? 1-100");
+            
         }
     }
 }

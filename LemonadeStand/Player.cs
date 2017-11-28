@@ -9,7 +9,7 @@ namespace LemonadeStand
     class Player
     {
         // member variables
-        string name;
+        public string name;
         Inventory inv;
         decimal money = 100;
 

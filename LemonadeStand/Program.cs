@@ -8,10 +8,16 @@ namespace LemonadeStand
 {
     class Program
     {
-        public void Main(string[] args)
+        static void Main(string[] args)
         {
             Player Player1 = new Player("Player1");
+            Lemon lemon = new Lemon();
+            Sugar sugar = new Sugar();
+            Cup cup = new Cup();
+            Ice ice = new Ice();
             Inventory Inventory1 = new Inventory("Player1");
+            Store store = new Store(lemon, sugar, cup, ice);
+            Console.ReadKey();
         }
     }
 }

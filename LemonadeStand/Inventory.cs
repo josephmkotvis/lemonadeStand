@@ -24,23 +24,12 @@ namespace LemonadeStand
         }
         void GetInventoryInfos()
         {
-            List<Item> inventoryItems = new List<Item>
+            List<string> inventoryItems = new List<string>
             {
-                lemon,
-                sugar,
-                ice,
-                cup
-            };
-        }
-        void GetInventoryAmounts()
-        {
-            List<double> inventoryItemsAmounts = new List<double>
-            {
-                lemonAmount,
-                sugarAmount,
-                iceAmount,
-                cupAmount,
-
+                lemon.name,
+                sugar.name,
+                ice.name,
+                cup.name
             };
         }
     }
