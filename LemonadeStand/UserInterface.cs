@@ -100,7 +100,7 @@ namespace LemonadeStand
         }
         public void DisplayRoundStart()
         {
-            //Say your begining round with recipe x and $y, weather is z. 
+            Console.WriteLine("Your recipe consists of: " + Environment.NewLine + +game.item1RecipeAmount + " " + inventory.item1name + "(s)." + Environment.NewLine + +game.item2RecipeAmount + " " + inventory.item2name + "(s)." + Environment.NewLine + +game.item3RecipeAmount + " " + inventory.item3name + "(s).");
         }
         public void DisplayRoundResults()
         {

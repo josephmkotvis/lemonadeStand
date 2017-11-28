@@ -14,6 +14,9 @@ namespace LemonadeStand
         Day day;
         private bool endCondition = false;
         public string currentWeather;
+        public double item1RecipeAmount;
+        public double item2RecipeAmount;
+        public double item3RecipeAmount;
         //constructor
 
         //methods
