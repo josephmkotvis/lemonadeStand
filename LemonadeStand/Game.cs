@@ -8,11 +8,12 @@ namespace LemonadeStand
 {
     class Game
     {  // member variables
-        int endDate;
+        public int endDate;
         UserInterface UI;
         Player player1;
         Day day;
         private bool endCondition = false;
+        public string currentWeather;
         //constructor
 
         //methods
@@ -50,7 +51,7 @@ namespace LemonadeStand
         }
         void SetPlayer1Name()
         {
-            UI.DisplayNameOption();
+            UI.DisplayPlayer1NameOption();
             UI.GetUserInput();
             player1.name = UI.userInput;
         }

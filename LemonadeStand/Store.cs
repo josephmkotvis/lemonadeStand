@@ -30,6 +30,14 @@ namespace LemonadeStand
         private object item2;
         private object item3;
         private object item4;
+        public string item1Name;
+        public string item2Name;
+        public string item3Name;
+        public string item4Name;
+        public decimal item1Cost;
+        public decimal item2Cost;
+        public decimal item3Cost;
+        public decimal item4Cost;
 
         public Store(Lemon item1,Sugar  item2,Ice item3,Cup item4)
         {
@@ -37,6 +45,14 @@ namespace LemonadeStand
             this.item2 = item2;
             this.item3 = item3;
             this.item4 = item4;
+            this.item1Name = item1.name;
+            this.item2Name = item2.name;
+            this.item3Name = item3.name;
+            this.item4Name = item4.name;
+            this.item1Cost = item1.cost;
+            this.item2Cost = item2.cost;
+            this.item3Cost = item3.cost;
+            this.item4Cost = item4.cost;
             item1BundleCost1 = ((item1.cost * bundleAmount1) * bundle1Discount);
             item1BundleCost2 = ((item1.cost * bundleAmount2) * bundle2Discount);
             item1BundleCost3 = ((item1.cost * bundleAmount3) * bundle3Discount);

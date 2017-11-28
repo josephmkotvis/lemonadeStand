@@ -10,7 +10,7 @@ namespace LemonadeStand
     {
         // member variables
         public string name;
-        decimal money = 100;
+        public decimal money = 100;
 
 
         //constructor
