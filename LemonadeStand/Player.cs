@@ -10,7 +10,6 @@ namespace LemonadeStand
     {
         // member variables
         public string name;
-        Inventory inv;
         decimal money = 100;
 
 

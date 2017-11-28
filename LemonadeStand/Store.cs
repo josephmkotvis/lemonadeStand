@@ -31,7 +31,7 @@ namespace LemonadeStand
         private object item3;
         private object item4;
 
-        public Store(Lemon item1,Sugar  item2,Cup item3,Ice item4)
+        public Store(Lemon item1,Sugar  item2,Ice item3,Cup item4)
         {
             this.item1 = item1;
             this.item2 = item2;
