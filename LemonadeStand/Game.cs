@@ -36,8 +36,18 @@ namespace LemonadeStand
         }
         void RunRound()
         {
-            UI.DisplayDay(); // runs the lemonade stand days
+            DisplayRoundInfo();
+
+
+               // runs the lemonade stand days
         }
+        void DisplayRoundInfo()
+        {
+            UI.DisplayDay();
+            UI.DisplayWeatherToday();
+            UI.DisplayPlayer1Inventory();
+        }
+
         void CheckWinningConditon()
         {
             // when it hits game.days (Amount of days they chose)

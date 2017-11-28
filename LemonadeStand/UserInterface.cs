@@ -43,7 +43,7 @@ namespace LemonadeStand
         }
         public void DisplayStoreOptions()
         {
-            Console.WriteLine( " The store has several available buying options. Some of these options are : " + Environment.NewLine + "1)" + store.item1Name + "(s) for " + store.item1Cost + " each." + Environment.NewLine + "2)" + store.item2Name + "(s) for " + store.item2Cost + " each." + Environment.NewLine + "3)" + store.item3Name + "(s) for " + store.item3Cost + " each." + Environment.NewLine + "4)" + store.item4Name + "(s) for " + store.item4Cost + " each." + Environment.NewLine + " Select the number accordingly (1-4) or press 5 to look at the bundles available for these options.");
+            Console.WriteLine( " The store has several available buying options. Some of these options are : " + Environment.NewLine + "1)" + store.item1Name + "(s) for " + store.item1Cost + " each." + Environment.NewLine + "2)" + store.item2Name + "(s) for " + store.item2Cost + " each." + Environment.NewLine + "3)" + store.item3Name + "(s) for " + store.item3Cost + " each." + Environment.NewLine + "4)" + store.item4Name + "(s) for " + store.item4Cost + " each." + Environment.NewLine + " Select the number accordingly (1-4) or press 5 to look at the bundles available for these options. If you would prefer to not buy this round, press 6.");
         } 
         public void DisplayItemBundles()
         {
