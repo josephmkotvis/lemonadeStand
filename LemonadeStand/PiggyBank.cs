@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Day
+    class PiggyBank
     {
-        string name;
-        public double currentDay = 1;
-
-        public string currentWeather;
-        // 
-
-    } 
+        public static decimal money = 100;
+    }
 }

@@ -8,20 +8,16 @@ namespace LemonadeStand
 {
     class Game
     {  // member variables
-
-        UserInterface UI;
-        Player player1;
         Day day;
         Inventory inventory1;
         Store store;
         private bool endCondition = false;
+        public int endDate;
 
 
         //constructor
-        public Game(UserInterface UI,Player player1,Day day,Inventory inventory1, Store store)
+        public Game(Day day,Inventory inventory1, Store store)
         {
-            this.UI = UI;
-            this.player1 = player1;
             this.day = day;
             this.inventory1 = inventory1;
             this.store = store;
@@ -52,20 +48,7 @@ namespace LemonadeStand
 
             // runs the lemonade stand days
         }
-        void CheckIfReadyToContinueToSelling()
-        {
-            UI.DisplayContinueToSellingOptions();
-            UI.GetUserInput();
-            switch (UI.userInput)
-            {
-                case "1":
-                    ChooseBuyingOptions();
-                    break;
-                case "2":
-                    UI.DisplayContinueToSelling();
-                    break;
-            }
-        }
+       
         void DisplayRoundInfo()
         {
             ClearConsoleLog();
@@ -607,18 +590,7 @@ namespace LemonadeStand
         {
             day.currentDay++;
         }
-       void SetEndDate()
-        {
-            UI.DisplayEndDateOption();
-            UI.GetUserInput();
-            player1.chosenEndDate = Convert.ToInt32(UI.userInput);
-            CheckEndDateChoie();
-        }
-        void SetPlayer1Name()
-        {
-            UI.DisplayPlayer1NameOption();
-            UI.GetUserInput();
-            player1.name = UI.userInput;
-        }
+
+
     }
 }

@@ -6,45 +6,33 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class UserInterface
+    public static class UserInterface
     {
         // member variables
-        public string userInput;
-        Player player1;
-        Inventory inventory;
-        Store store;
-        Day day;
+  
+        // move to playerinput
+        
+
+        // make UI into a static
 
         // constructor
-        public UserInterface(Player player1, Inventory inventory, Store store, Day day)
-        {
-            this.player1 = player1;
-            this.inventory = inventory;
-            this.store = store;
-            this.day = day;
-        }
-        //methods
 
-        public void DisplayPlayer1NameOption()
+        public static void DisplayPlayerNameOption()
         {
-            Console.WriteLine(Environment.NewLine + "What is " + player1.name + "'s name?");
+            Console.WriteLine(Environment.NewLine + "What would you like your name to be?");
         }
-        public string GetUserInput()
-        {
-            userInput = Console.ReadLine();
-            return userInput;
-        }
-        public void DisplayFaq()
+
+        public static void DisplayFaq()
         {
             Console.WriteLine(Environment.NewLine + "This is how to play blah blah");
         }
-        public void DisplayPlayer1Inventory()
+        public static void DisplayPlayer1Inventory()
         {
-            Console.WriteLine(Environment.NewLine + "" + player1.name + "'s inventory consists of: " + Environment.NewLine + + inventory.item1Amount + " " + inventory.item1name + "(s), " + Environment.NewLine + +  inventory.item2Amount + " "  + inventory.item2name + "(s), " + Environment.NewLine + + inventory.item3Amount + " " + inventory.item3name + "(s), " + Environment.NewLine + + inventory.item4Amount + " " + inventory.item4name + "(s). ");
+            Console.WriteLine(Environment.NewLine + "" + Player.name + "'s inventory consists of: " + Environment.NewLine + + Inventory.item1Amount + " " + inventory.item1name + "(s), " + Environment.NewLine + +  inventory.item2Amount + " "  + inventory.item2name + "(s), " + Environment.NewLine + + inventory.item3Amount + " " + inventory.item3name + "(s), " + Environment.NewLine + + inventory.item4Amount + " " + inventory.item4name + "(s). ");
         }
-        public void DisplayPlayer1Money()
+        public static void DisplayPlayer1Money()
         {
-            Console.WriteLine(Environment.NewLine + player1.name + " currently has " + player1.money + " in the piggybank" );
+            Console.WriteLine(Environment.NewLine + Player.name + " currently has " + PiggyBank.money + " in the piggybank" );
         }
         public void DisplayStoreOptions()
         {
@@ -177,7 +165,7 @@ namespace LemonadeStand
         {
             //Displays the amount of people that could be buying compared to how many did
         }
-        public void DisplayEndDateOption()
+        public static void DisplayEndDateOption()
         {
             Console.WriteLine(Environment.NewLine + "How many days would you like to play? 1-50.");
         }

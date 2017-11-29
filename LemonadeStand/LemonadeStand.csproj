@@ -58,6 +58,7 @@
     <Compile Include="Item.cs" />
     <Compile Include="Lemon.cs" />
     <Compile Include="Millionare.cs" />
+    <Compile Include="PiggyBank.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

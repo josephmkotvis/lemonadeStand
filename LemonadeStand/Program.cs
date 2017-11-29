@@ -10,7 +10,6 @@ namespace LemonadeStand
     {
         static void Main(string[] args)
         {
-            Player player1 = new Player("Player1");
             Lemon lemon = new Lemon();
             Sugar sugar = new Sugar();
             Ice ice = new Ice();
@@ -18,8 +17,8 @@ namespace LemonadeStand
             Inventory inventory1 = new Inventory("Player1", lemon, sugar, ice, cup);
             Store store = new Store(lemon, sugar, ice, cup);
             Day newDay = new Day();
-            UserInterface UI = new UserInterface(player1, inventory1, store, newDay);
-            Game gameRound = new Game(UI, player1, newDay, inventory1,store);
+            Game gameRound = new Game(newDay, inventory1,store);
+            Player player1 = new Player("Player1", gameRound);
             gameRound.RunGame();
             Console.ReadKey();
         }
