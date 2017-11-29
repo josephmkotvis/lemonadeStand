@@ -17,10 +17,10 @@ namespace LemonadeStand
         public string item2name;
         public string item3name;
         public string item4name;
-        public double item1Amount = 0;
-        public double item2Amount = 0;
-        public double item3Amount = 0;
-        public double item4Amount = 0;
+        public decimal item1Amount = 0;
+        public decimal item2Amount = 0;
+        public decimal item3Amount = 0;
+        public decimal item4Amount = 0;
 
         public Inventory(string owner, Lemon item1, Sugar item2, Ice item3, Cup item4)
         {

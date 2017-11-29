@@ -11,6 +11,10 @@ namespace LemonadeStand
         // member variables
         public string name;
         public decimal money = 100;
+        public decimal item1RecipeAmount;
+        public decimal item2RecipeAmount;
+        public decimal item3RecipeAmount;
+        public int chosenEndDate;
 
 
         //constructor

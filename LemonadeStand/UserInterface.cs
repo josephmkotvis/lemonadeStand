@@ -14,15 +14,20 @@ namespace LemonadeStand
         Inventory inventory;
         Store store;
         Day day;
-        Game game;
 
         // constructor
-
+        public UserInterface(Player player1, Inventory inventory, Store store, Day day)
+        {
+            this.player1 = player1;
+            this.inventory = inventory;
+            this.store = store;
+            this.day = day;
+        }
         //methods
 
         public void DisplayPlayer1NameOption()
         {
-            Console.WriteLine("What is " + player1.name + "'s name?");
+            Console.WriteLine(Environment.NewLine + "What is " + player1.name + "'s name?");
         }
         public string GetUserInput()
         {
@@ -31,84 +36,98 @@ namespace LemonadeStand
         }
         public void DisplayFaq()
         {
-            Console.WriteLine("This is how to play blah blah");
+            Console.WriteLine(Environment.NewLine + "This is how to play blah blah");
         }
         public void DisplayPlayer1Inventory()
         {
-            Console.WriteLine("Your inventory consists of " + Environment.NewLine + + inventory.item1Amount + " " + inventory.item1name + "(s), " + Environment.NewLine + +  inventory.item2Amount + " "  + inventory.item2name + "(s), " + Environment.NewLine + + inventory.item3Amount + " " + inventory.item3name + "(s), " + Environment.NewLine + + inventory.item4Amount + " " + inventory.item4name + "(s). ");
+            Console.WriteLine(Environment.NewLine + "" + player1.name + "'s inventory consists of: " + Environment.NewLine + + inventory.item1Amount + " " + inventory.item1name + "(s), " + Environment.NewLine + +  inventory.item2Amount + " "  + inventory.item2name + "(s), " + Environment.NewLine + + inventory.item3Amount + " " + inventory.item3name + "(s), " + Environment.NewLine + + inventory.item4Amount + " " + inventory.item4name + "(s). ");
         }
         public void DisplayPlayer1Money()
         {
-            Console.WriteLine(player1.name + "currently has " + player1.money + " in the piggybank" );
+            Console.WriteLine(Environment.NewLine + player1.name + " currently has " + player1.money + " in the piggybank" );
         }
         public void DisplayStoreOptions()
         {
-            Console.WriteLine( " The store has several available buying options. Some of these options are : " + Environment.NewLine + "1)" + store.item1Name + "(s) for " + store.item1Cost + " each." + Environment.NewLine + "2)" + store.item2Name + "(s) for " + store.item2Cost + " each." + Environment.NewLine + "3)" + store.item3Name + "(s) for " + store.item3Cost + " each." + Environment.NewLine + "4)" + store.item4Name + "(s) for " + store.item4Cost + " each." + Environment.NewLine + " Select the number accordingly (1-4) or press 5 to look at the bundles available for these options. If you would prefer to not buy this round, press 6.");
+            Console.WriteLine(Environment.NewLine + "The store has several available buying options. Select the number accordingly (1-5) to these options are : " + Environment.NewLine + "1)" + store.item1Cost + "$ for each "+ store.item1Name +"." + Environment.NewLine + "2)" + store.item2Cost + "$ for each " + store.item2Name + "." + Environment.NewLine + "3)" + store.item3Cost + "$ for each " + store.item3Name + "." + Environment.NewLine + "4)" + store.item4Cost + "$ for each " + store.item4Name + "." + Environment.NewLine  + "5)Look at the bundles available for these items." + Environment.NewLine + "6)To continue.");
         } 
+        public void DisplayIncorrectChoice()
+        {
+            Console.WriteLine(Environment.NewLine + "You have selected an incorrect choice, please try again");
+        }
+        public void DisplayFinishBuyingOption()
+        {
+            Console.WriteLine(Environment.NewLine + "Select the number that matches your decision:" + Environment.NewLine + "1)Continue Buying" + Environment.NewLine + "2)Finish Buying" );
+        }
         public void DisplayItemBundles()
         {
-            Console.WriteLine(" The bundles come in sets of " + Environment.NewLine + + store.bundleAmount1 +" for " + (100 * store.bundle1Discount) + "% off, " + Environment.NewLine + +store.bundleAmount2 + " for " + (100 * store.bundle2Discount) + "% off, " + Environment.NewLine + +store.bundleAmount3 + " for " + (100 * store.bundle3Discount) + "% off." + Environment.NewLine + "Choose the number accordingly to wchich item you would want to see specific prices for:" + Environment.NewLine +" 1)" + store.item1Name + ","+ Environment.NewLine + "2)" + store.item2Name + "," + Environment.NewLine + "3)" + store.item3Name + "," + Environment.NewLine + "4)" + store.item4Name + "."  );
+            Console.WriteLine(Environment.NewLine + "The bundles come in sets of " + Environment.NewLine + + store.bundle1Amount +" for " + (100 * store.bundle1Discount) + "% off, " + Environment.NewLine + + store.bundle2Amount + " for " + (100 * store.bundle2Discount) + "% off, " + Environment.NewLine + +store.bundle3Amount + " for " + (100 * store.bundle3Discount) + "% off." + Environment.NewLine + "Choose the number accordingly to which item you would want to see specific prices for:" + Environment.NewLine +"1)" + store.item1Name + ","+ Environment.NewLine + "2)" + store.item2Name + "," + Environment.NewLine + "3)" + store.item3Name + "," + Environment.NewLine + "4)" + store.item4Name + "," + Environment.NewLine + "5)To return to buying the items individually," + Environment.NewLine + "6)To continue.");
         }
         public void DisplayItem1Bundles()
         {
-            Console.WriteLine(" You have chosen to look at the bundle prices for the " + store.item1Name + "." + Environment.NewLine + "Choose the number accordinlgy to the bundle you would like to purhcase:" + Environment.NewLine + "1)" +store.bundleAmount1 + "pack for " + store.item1BundleCost1 + "" +Environment.NewLine +"2)" +store.bundleAmount2 + "pack for " +store.item1BundleCost2 +"" + Environment.NewLine +"3" + store.bundleAmount3 + " pack for " + store.item1BundleCost3 +".");
+            Console.WriteLine(Environment.NewLine + "You have chosen to look at the bundle prices for the " + store.item1Name + "." + Environment.NewLine + "Choose the number accordinlgy to the bundle you would like to purhcase:" + Environment.NewLine + "1)" +store.bundle1Amount + " pack for " + store.item1Bundle1Cost + "$," +Environment.NewLine +"2)" +store.bundle2Amount + " pack for " +store.item1Bundle2Cost +"$," + Environment.NewLine +"3)" + store.bundle3Amount + " pack for " + store.item1Bundle3Cost +"$," + Environment.NewLine + "4)Return to choosing which item for bundle options," + Environment.NewLine + "5)To continue.");
         }
         public void DisplayItem2Bundles()
         {
-            Console.WriteLine(" You have chosen to look at the bundle prices for the " + store.item2Name + "." + Environment.NewLine + "Choose the number accordinlgy to the bundle you would like to purhcase:" + Environment.NewLine + "1)" + store.bundleAmount1 + "pack for " + store.item2BundleCost1 + "" + Environment.NewLine + "2)" + store.bundleAmount2 + "pack for " + store.item2BundleCost2 + "" + Environment.NewLine + "3" + store.bundleAmount3 + " pack for " + store.item2BundleCost3 + ".");
+            Console.WriteLine(Environment.NewLine + "You have chosen to look at the bundle prices for the " + store.item2Name + "." + Environment.NewLine + "Choose the number accordinlgy to the bundle you would like to purhcase:" + Environment.NewLine + "1)" + store.bundle1Amount + " pack for " + store.item2Bundle1Cost + "$," + Environment.NewLine + "2)" + store.bundle2Amount + " pack for " + store.item2Bundle2Cost + "$," + Environment.NewLine + "3)" + store.bundle3Amount + " pack for " + store.item2Bundle3Cost + "$," + Environment.NewLine + "4)Return to choosing which item for bundle options," + Environment.NewLine + "5)To continue.");
         }
         public void DisplayItem3Bundles()
         {
-            Console.WriteLine(" You have chosen to look at the bundle prices for the " + store.item3Name + "." + Environment.NewLine + "Choose the number accordinlgy to the bundle you would like to purhcase:" + Environment.NewLine + "1)" + store.bundleAmount1 + "pack for " + store.item3BundleCost1 + "" + Environment.NewLine + "2)" + store.bundleAmount2 + "pack for " + store.item3BundleCost2 + "" + Environment.NewLine + "3" + store.bundleAmount3 + " pack for " + store.item3BundleCost3 + ".");
+            Console.WriteLine(Environment.NewLine + "You have chosen to look at the bundle prices for the " + store.item3Name + "." + Environment.NewLine + "Choose the number accordinlgy to the bundle you would like to purhcase:" + Environment.NewLine + "1)" + store.bundle1Amount + " pack for " + store.item3Bundle1Cost + "$," + Environment.NewLine + "2)" + store.bundle2Amount + " pack for " + store.item3Bundle2Cost + "$," + Environment.NewLine + "3)" + store.bundle3Amount + " pack for " + store.item3Bundle3Cost + "$," + Environment.NewLine + "4)Return to choosing which item for bundle options," + Environment.NewLine + "5)To continue.");
         }
         public void DisplayItem4Bundles()
         {
-            Console.WriteLine(" You have chosen to look at the bundle prices for the " + store.item4Name + "." + Environment.NewLine + "Choose the number accordinlgy to the bundle you would like to purhcase:" + Environment.NewLine + "1)" + store.bundleAmount1 + "pack for " + store.item4BundleCost1 + "" + Environment.NewLine + "2)" + store.bundleAmount2 + "pack for " + store.item4BundleCost2 + "" + Environment.NewLine + "3" + store.bundleAmount3 + " pack for " + store.item4BundleCost3 + ".");
+            Console.WriteLine(Environment.NewLine + "You have chosen to look at the bundle prices for the " + store.item4Name + "." + Environment.NewLine + "Choose the number accordinlgy to the bundle you would like to purhcase:" + Environment.NewLine + "1)" + store.bundle1Amount + " pack for " + store.item4Bundle1Cost + "$," + Environment.NewLine + "2)" + store.bundle2Amount + " pack for " + store.item4Bundle2Cost + "$," + Environment.NewLine + "3)" + store.bundle3Amount + " pack for " + store.item4Bundle3Cost + "$," + Environment.NewLine + "4)Return to choosing which item for bundle options," + Environment.NewLine + "5)To continue.");
         }
 
         public void DisplayDay()
         {
-            Console.WriteLine("You are on day " + day.currentDay + " out of " + game.endDate + "s." );
+            Console.WriteLine(Environment.NewLine + "You are on day " + day.currentDay + " out of " + player1.chosenEndDate + "." );
         }
         public void DisplayWeatherToday()
         {
-            Console.WriteLine( "The current weather is" + game.currentWeather + ".");
+            Console.WriteLine(Environment.NewLine + "The current weather is" + day.currentWeather + ".");
         }
         public void DisplayWeatherWeek()
         {
             //Displays what the weather is that week
+                // make a generator for the day in 7th spot
+                //then everytime the round ends just make
+                //weathernextday become current weather
+                //weather2ndDay become weathernext day
+                // then do that until the seventh day where that will be randomly generated/
         }
         public void DisplayItem1RecipeOption()
         {
-            Console.WriteLine("How many " + inventory.item1name + " out of " + inventory.item1Amount + " would you like to use? (0-" + inventory.item1Amount + ")");
+            Console.WriteLine(Environment.NewLine + "How many " + inventory.item1name + " out of " + inventory.item1Amount + " would you like to use? (0-" + inventory.item1Amount + ")");
         }
         public void DisplayItem2RecipeOption()
         {
-            Console.WriteLine("How many " + inventory.item2name + " out of " + inventory.item2Amount + " would you like to use? (0-" + inventory.item2Amount + ")");
+            Console.WriteLine(Environment.NewLine + "How many " + inventory.item2name + " out of " + inventory.item2Amount + " would you like to use? (0-" + inventory.item2Amount + ")");
         }
         public void DisplayItem3RecipeOption()
         {
-            Console.WriteLine("How many " + inventory.item3name + " out of " + inventory.item3Amount + " would you like to use? (0-" + inventory.item3Amount + ")");
+            Console.WriteLine(Environment.NewLine + "How many " + inventory.item3name + " out of " + inventory.item3Amount + " would you like to use? (0-" + inventory.item3Amount + ")");
         }
         public void DisplayItem4RecipeOption()
         {
-            Console.WriteLine("How many " + inventory.item4name + " out of " + inventory.item4Amount + " would you like to use? (0-" + inventory.item4Amount + ")");
+            Console.WriteLine(Environment.NewLine + "How many " + inventory.item4name + " out of " + inventory.item4Amount + " would you like to use? (0-" + inventory.item4Amount + ")");
         }
         public void DisplayCostOptions()
         {
-            Console.WriteLine(" How much would you like to charge for each one of your products? (0$ - 100$)");
+            Console.WriteLine(Environment.NewLine + " How much would you like to charge for each one of your products? (0$ - 100$)");
         }
         public void DisplayRoundStart()
         {
-            Console.WriteLine("Your recipe consists of: " + Environment.NewLine + +game.item1RecipeAmount + " " + inventory.item1name + "(s)." + Environment.NewLine + +game.item2RecipeAmount + " " + inventory.item2name + "(s)." + Environment.NewLine + +game.item3RecipeAmount + " " + inventory.item3name + "(s).");
+            Console.WriteLine(Environment.NewLine + "Your recipe consists of: " + Environment.NewLine + +player1.item1RecipeAmount + " " + inventory.item1name + "(s)." + Environment.NewLine + +player1.item2RecipeAmount + " " + inventory.item2name + "(s)." + Environment.NewLine + +player1.item3RecipeAmount + " " + inventory.item3name + "(s).");
         }
         public void DisplayRoundResults()
         {
+
             // Display the results of the round
         }
         public void DisplaySalesResults()
         {
-            //Display how many cups were sold.
+            //Display how many cups were sold
         }
         public void DisplayInventoryChanges()
         {
@@ -160,8 +179,23 @@ namespace LemonadeStand
         }
         public void DisplayEndDateOption()
         {
-            Console.WriteLine("How many days would you like to play? 1-100");
-            
+            Console.WriteLine(Environment.NewLine + "How many days would you like to play? 1-50.");
+        }
+        public void DisplayPressToContinue()
+        {
+            Console.WriteLine(Environment.NewLine + "Press any button to continue.");
+        }
+        public void DisplayLackOfMoney()
+        {
+            Console.WriteLine(Environment.NewLine + "You do not have enough funds for this purchase.");
+        }
+        public void DisplayContinueToSelling()
+        {
+            Console.WriteLine(Environment.NewLine + "Now the round will begin.");
+        }
+        public void DisplayContinueToSellingOptions()
+        {
+            Console.WriteLine(Environment.NewLine + "Would you like to begin selling your product?" + Environment.NewLine + " 1)Continue prepping" + Environment.NewLine + "2)Begin Selling.");
         }
     }
 }

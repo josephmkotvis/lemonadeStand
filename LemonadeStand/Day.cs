@@ -11,5 +11,7 @@ namespace LemonadeStand
         string name;
         public double currentDay = 1;
 
+        public string currentWeather;
+
     } 
 }
