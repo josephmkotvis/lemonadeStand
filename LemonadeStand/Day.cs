@@ -9,8 +9,12 @@ namespace LemonadeStand
     class Day
     {
         public double currentDay = 1;
-
-        public string currentWeather;
+        public string currentWeatherType;
+        public double currentWeatherTypeNumber;
+        public double currentAirTemperature;
+        public double currentHumidity;
+        public double currentWindSpeed;
+        public double currentPrecipitation;
         // 
 
     } 

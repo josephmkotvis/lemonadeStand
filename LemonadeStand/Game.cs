@@ -8,17 +8,29 @@ namespace LemonadeStand
 {
     class Game
     {  // member 
+        Random rnd = new Random();
         public Player player;
         public UserInterface UI;
         public Store store;
-        public Day day;
-        private bool endCondition = false;
+        public Day day1;
+        public Day day2;
+        public Day day3;
+        public Day day4;
+        public Day day5;
+        public Day day6;
+        public Day day7;
+        BussinessPerson customer1;
+        Banker customer2;
+        Millionare customer3;
+        Student customer4;
+        Teacher customer5;
+        Athlete customer6;
+        ConstructionWorker customer7;
         public Weather weather;
         public Customer customer;
-        public ReviewBook complaintBook;
-        AttendanceList attendanceList;
-
-
+        private double startingCustomers = 30;
+        private double amountOfVisitors;
+        private bool endCondition = false;
         //constructor
         public Game()
         {
@@ -26,12 +38,25 @@ namespace LemonadeStand
             Lemon item2 = new Lemon();
             Sugar item3 = new Sugar();
             Ice item4 = new Ice();
-            this.day = new Day();
+            this.day1 = new Day();
+            this.day2 = new Day();
+            this.day3 = new Day();
+            this.day4 = new Day();
+            this.day5 = new Day();
+            this.day6 = new Day();
+            this.day7 = new Day();
             this.store = new Store(item1, item2, item3, item4);
             this.player = new Player("Player1", store, item1, item2, item3, item4);
             this.weather = new Weather();
             this.customer = new Customer(player, weather);
-            this.UI = new UserInterface(player, store, day);
+            this.customer1 = new BussinessPerson(player, weather);
+            this.customer2 = new Banker(player, weather);
+            this.customer3 = new Millionare(player, weather);
+            this.customer4 = new Student(player, weather);
+            this.customer5 = new Teacher(player, weather);
+            this.customer6 = new Athlete(player, weather);
+            this.customer7 = new ConstructionWorker(player, weather);
+            this.UI = new UserInterface(player, store, day1, day2, day3, day4, day5, day6, day7);
         }
 
 
@@ -43,6 +68,7 @@ namespace LemonadeStand
             AskToChooseEndDate();
             // ask game type 2 player or 1 player if add later
             AskToChoosePlayerName();
+            SetStartingWeather();
             do
             {
                 RunRound();
@@ -50,11 +76,277 @@ namespace LemonadeStand
         }
         void RunRound()
         {
+            RunPreSellingPart();
+            // runs the lemonade stand days
+
+
+            TransferDayWeathers();
+        }
+        void RunSellingPart()
+        {
+            for (int i = 0; i < amountOfVisitors; i++)
+            {
+
+            }
+        }
+        void ChooseRandomBuyer()
+        {
+            int choosenBuyer = rnd.Next(1, 8);
+            switch (choosenBuyer)
+            {
+                case 1:
+                    
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+            }
+        }
+        void SetAmountOfVisitors()
+        {
+            amountOfVisitors = startingCustomers + ((player.attendanceList.percentageOfCustomersAttended + 1) * startingCustomers);
+        }
+        void RunPreSellingPart()
+        {
+            TransferDayWeathers();
             UI.ClearConsoleLog();
             AskToChooseBuyingOptions();
             PromptToChooseRecipe();
             AskToChooseProductPrice();
-            // runs the lemonade stand days
+        }
+        void SetStartingWeather()
+        {
+            SetDay1Weather();
+            SetDay2Weather();
+            SetDay3Weather();
+            SetDay4Weather();
+            SetDay5Weather();
+            SetDay6Weather();
+            SetDay7Weather();
+
+        }
+        void TransferDayWeathers()
+        {
+            TransferDay2WeatherToDay1();
+            TransferDay3WeatherToDay2();
+            TransferDay4WeatherToDay3();
+            TransferDay5WeatherToDay4();
+            TransferDay6WeatherToDay5();
+            TransferDay7WeatherToDay6();
+            SetDay7Weather();
+
+        }
+        void TransferDay2WeatherToDay1()
+        {
+            day1.currentWeatherType = day2.currentWeatherType;
+            day1.currentAirTemperature = day2.currentAirTemperature;
+            day1.currentHumidity = day2.currentHumidity;
+            day1.currentWindSpeed = day2.currentWindSpeed;
+            day1.currentPrecipitation = day2.currentPrecipitation;
+        }
+        void TransferDay3WeatherToDay2()
+        {
+            day2.currentWeatherType = day3.currentWeatherType;
+            day2.currentAirTemperature = day3.currentAirTemperature;
+            day2.currentHumidity = day3.currentHumidity;
+            day2.currentWindSpeed = day3.currentWindSpeed;
+            day2.currentPrecipitation = day3.currentPrecipitation;
+        }
+        void TransferDay4WeatherToDay3()
+        {
+            day3.currentWeatherType = day4.currentWeatherType;
+            day3.currentAirTemperature = day4.currentAirTemperature;
+            day3.currentHumidity = day4.currentHumidity;
+            day3.currentWindSpeed = day4.currentWindSpeed;
+            day3.currentPrecipitation = day4.currentPrecipitation;
+        }
+        void TransferDay5WeatherToDay4()
+        {
+            day4.currentWeatherType = day5.currentWeatherType;
+            day4.currentAirTemperature = day5.currentAirTemperature;
+            day4.currentHumidity = day5.currentHumidity;
+            day4.currentWindSpeed = day5.currentWindSpeed;
+            day4.currentPrecipitation = day5.currentPrecipitation;
+        }
+        void TransferDay6WeatherToDay5()
+        {
+            day5.currentWeatherType = day6.currentWeatherType;
+            day5.currentAirTemperature = day6.currentAirTemperature;
+            day5.currentHumidity = day6.currentHumidity;
+            day5.currentWindSpeed = day6.currentWindSpeed;
+            day5.currentPrecipitation = day6.currentPrecipitation;
+        }
+        void TransferDay7WeatherToDay6()
+        {
+            day6.currentWeatherType = day7.currentWeatherType;
+            day6.currentAirTemperature = day7.currentAirTemperature;
+            day6.currentHumidity = day7.currentHumidity;
+            day6.currentWindSpeed = day7.currentWindSpeed;
+            day6.currentPrecipitation = day7.currentPrecipitation;
+        }
+        void SetDay1Weather()
+        {
+            GetWeatherVariables();
+            SetDay1WeatherVariables();
+        }
+        void SetDay2Weather()
+        {
+            GetWeatherVariables();
+            SetDay2WeatherVariables();
+        }
+        void SetDay3Weather()
+        {
+            GetWeatherVariables();
+            SetDay3WeatherVariables();
+        }
+        void SetDay4Weather()
+        {
+            GetWeatherVariables();
+            SetDay4WeatherVariables();
+        }
+        void SetDay5Weather()
+        {
+            GetWeatherVariables();
+            SetDay5WeatherVariables();
+        }
+        void SetDay6Weather()
+        {
+            GetWeatherVariables();
+            SetDay6WeatherVariables();
+        }
+        void SetDay7Weather()
+        {
+            GetWeatherVariables();
+            SetDay7WeatherVariables();
+        }
+        void SetDay2WeatherVariables()
+        {
+            day2.currentWeatherType = weather.weatherType;
+            day2.currentAirTemperature = weather.airTemperature;
+            day2.currentHumidity = weather.humidity;
+            day2.currentWindSpeed = weather.windSpeed;
+            day2.currentPrecipitation = weather.precipitation;
+        }
+        void SetDay3WeatherVariables()
+        {
+            day3.currentWeatherType = weather.weatherType;
+            day3.currentAirTemperature = weather.airTemperature;
+            day3.currentHumidity = weather.humidity;
+            day3.currentWindSpeed = weather.windSpeed;
+            day3.currentPrecipitation = weather.precipitation;
+        }
+        void SetDay4WeatherVariables()
+        {
+            day4.currentWeatherType = weather.weatherType;
+            day4.currentAirTemperature = weather.airTemperature;
+            day4.currentHumidity = weather.humidity;
+            day4.currentWindSpeed = weather.windSpeed;
+            day4.currentPrecipitation = weather.precipitation;
+        }
+        void SetDay5WeatherVariables()
+        {
+            day5.currentWeatherType = weather.weatherType;
+            day5.currentAirTemperature = weather.airTemperature;
+            day5.currentHumidity = weather.humidity;
+            day5.currentWindSpeed = weather.windSpeed;
+            day5.currentPrecipitation = weather.precipitation;
+        }
+        void SetDay6WeatherVariables()
+        {
+            day6.currentWeatherType = weather.weatherType;
+            day6.currentAirTemperature = weather.airTemperature;
+            day6.currentHumidity = weather.humidity;
+            day6.currentWindSpeed = weather.windSpeed;
+            day6.currentPrecipitation = weather.precipitation;
+        }
+        void SetDay7WeatherVariables()
+        {
+            day7.currentWeatherType = weather.weatherType;
+            day7.currentAirTemperature = weather.airTemperature;
+            day7.currentHumidity = weather.humidity;
+            day7.currentWindSpeed = weather.windSpeed;
+            day7.currentPrecipitation = weather.precipitation;
+        }
+        void GetWeatherVariables()
+        {
+            weather.weatherTypeNumber = rnd.Next(1, 6);
+            switch (weather.weatherTypeNumber)
+            {
+                case 1:
+                    MatchWeatherNumberToSunny();
+                    break;
+                case 2:
+                    MatchWeatherNumberToRain();
+                    break;
+                case 3:
+                    MatchWeatherNumberToHail();
+                    break;
+                case 4:
+                    MatchWeatherNumberToFoggy();
+                    break;
+                case 5:
+                    MatchWeatherNumberToWindy();
+                    break;
+            }
+           
+        }
+        void SetDay1WeatherVariables()
+        {
+            day1.currentWeatherType = weather.weatherType;
+            day1.currentAirTemperature = weather.airTemperature;
+            day1.currentHumidity = weather.humidity;
+            day1.currentWindSpeed = weather.windSpeed;
+            day1.currentPrecipitation = weather.precipitation;
+
+        }
+        void MatchWeatherNumberToSunny()
+        {
+            weather.weatherType = "Sunny";
+            weather.airTemperature = rnd.Next(70, 91);
+            weather.humidity = rnd.Next(40, 90);
+            weather.windSpeed = rnd.Next(0, 20);
+            weather.precipitation = rnd.Next(0, 10);
+        }
+        void MatchWeatherNumberToRain()
+        {
+            weather.weatherType = "Rain";
+            weather.airTemperature = rnd.Next(32, 80);
+            weather.humidity = rnd.Next(60, 80);
+            weather.windSpeed = rnd.Next(0, 20);
+            weather.precipitation = rnd.Next(0, 10);
+        }
+        void MatchWeatherNumberToHail()
+        {
+            weather.weatherType = "Hail";
+            weather.airTemperature = rnd.Next(40, 60);
+            weather.humidity = rnd.Next(40, 60);
+            weather.windSpeed = rnd.Next(0, 20);
+            weather.precipitation = rnd.Next(0, 10);
+        }
+        void MatchWeatherNumberToFoggy()
+        {
+            weather.weatherType = "Foggy";
+            weather.airTemperature = rnd.Next(30, 51);
+            weather.humidity = rnd.Next(80, 90);
+            weather.windSpeed = rnd.Next(0, 10);
+            weather.precipitation = rnd.Next(8, 10);
+        }
+        void MatchWeatherNumberToWindy()
+        {
+            weather.weatherType = "Windy";
+            weather.airTemperature = rnd.Next(30, 90);
+            weather.humidity = rnd.Next(30, 70);
+            weather.windSpeed = rnd.Next(0, 10);
+            weather.precipitation = rnd.Next(0, 10);
         }
         void AskToChooseProductPrice()
         {
@@ -651,7 +943,7 @@ namespace LemonadeStand
         }
         void UpdatCurrentDay()
         {
-            day.currentDay++;
+            day1.currentDay++;
         }
     }
 }

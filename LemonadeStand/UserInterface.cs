@@ -12,15 +12,27 @@ namespace LemonadeStand
         public string userInput;
         Player player;
         Store store;
-        Day day;
+        Day day1;
+        Day day2;
+        Day day3;
+        Day day4;
+        Day day5;
+        Day day6;
+        Day day7;
         // make UI into a static
 
         // constructor
-        public UserInterface(Player player,Store store,Day day)
+        public UserInterface(Player player,Store store,Day day1, Day day2, Day day3, Day day4, Day day5, Day day6, Day day7)
         {
             this.player = player;
             this.store = store;
-            this.day = day;
+            this.day1 = day1;
+            this.day2 = day2;
+            this.day3 = day3;
+            this.day4 = day4;
+            this.day5 = day5;
+            this.day6 = day6;
+            this.day7 = day7;
         }
         //methods
         public  void ClearConsoleLog()
@@ -30,7 +42,8 @@ namespace LemonadeStand
         public void DisplayRoundInfo()
         {
             DisplayDay();
-            DisplayWeatherToday();
+            DisplayWeather();
+            DisplayWeatherWeek();
             DisplayPlayer1Money();
             DisplayPlayer1Inventory();
         }
@@ -100,20 +113,16 @@ namespace LemonadeStand
         }
         public void DisplayDay()
         {
-            Console.WriteLine(Environment.NewLine + "You are on day " + day.currentDay + " out of " + player.chosenEndDate + "." );
+            Console.WriteLine(Environment.NewLine + "You are on day " + day1.currentDay + " out of " + player.chosenEndDate + "." );
         }
-        public void DisplayWeatherToday()
+        public void DisplayWeather()
         {
-            Console.WriteLine(Environment.NewLine + "The current weather is" + day.currentWeather + ".");
+            Console.WriteLine("Today's weather is " + Environment.NewLine + "" + day1.currentWeatherType + "" + Environment.NewLine + "Air Temperature: " + day1.currentAirTemperature + ""  + Environment.NewLine + "Humidity: " + day1.currentHumidity + "" +Environment.NewLine + "WindSpeed: " + day1.currentWindSpeed + "" + Environment.NewLine +  "Precipitation: " + day1.currentPrecipitation);    
         }
         public void DisplayWeatherWeek()
         {
-            //Displays what the weather is that week
-                // make a generator for the day in 7th spot
-                //then everytime the round ends just make
-                //weathernextday become current weather
-                //weather2ndDay become weathernext day
-                // then do that until the seventh day where that will be randomly generated/
+            Console.WriteLine(Environment.NewLine + "The weather for the rest of the week is as follows:" + Environment.NewLine + "2)" + day1.currentWeatherType + "" + Environment.NewLine + "3)" + day2.currentWeatherType + "" + Environment.NewLine + "4)" + day3.currentWeatherType + "" + Environment.NewLine + "5)" + day4.currentWeatherType + "" + Environment.NewLine + "6)" + day5.currentWeatherType + "" + Environment.NewLine + "7)" + day6.currentWeatherType + "" + Environment.NewLine + "8)" + day7.currentWeatherType);
+
         }
         public void DisplayContinuationToRecipe()
         {
