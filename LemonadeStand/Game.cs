@@ -13,6 +13,9 @@ namespace LemonadeStand
         public Store store;
         public Day day;
         private bool endCondition = false;
+        public Weather weather;
+        public Customer customer;
+        public ComplaintBook complaintBook;
 
 
         //constructor
@@ -25,6 +28,9 @@ namespace LemonadeStand
             this.day = new Day();
             this.store = new Store(item1, item2, item3, item4);
             this.player = new Player("Player1", store, item1, item2, item3, item4);
+            this.weather = new Weather();
+            this.complaintBook = new ComplaintBook();
+            this.customer = new Customer(player, weather, complaintBook);
             this.UI = new UserInterface(player, store, day);
         }
 

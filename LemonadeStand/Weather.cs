@@ -8,10 +8,11 @@ namespace LemonadeStand
 {
     class Weather
     {
-        double airTemperature;
-        double humidity;
-        double windSpeed;
-        double precipitation;
+        public string weatherType;
+        public double airTemperature;
+        public double humidity;
+        public double windSpeed;
+        public double precipitation;
 
 
     }

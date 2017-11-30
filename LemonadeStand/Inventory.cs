@@ -20,6 +20,7 @@ namespace LemonadeStand
         public double item2Amount = 0;
         public double item3Amount = 0;
         public double item4Amount = 0;
+        public double MerchandiseSold = 0;
         Store store;
 
         public Inventory( Lemon item1, Sugar item2, Ice item3, Cup item4, Store store)
