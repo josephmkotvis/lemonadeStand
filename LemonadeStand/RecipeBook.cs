@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Day
+    class RecipeBook
     {
-        public double currentDay = 1;
-
-        public string currentWeather;
-        // 
-
-    } 
+        public decimal item1RecipeAmount;
+        public decimal item2RecipeAmount;
+        public decimal item3RecipeAmount;
+    }
 }

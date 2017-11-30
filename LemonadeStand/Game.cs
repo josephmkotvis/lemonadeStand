@@ -7,22 +7,28 @@ using System.Threading.Tasks;
 namespace LemonadeStand
 {
     class Game
-    {  // member variables
-        Day day;
-        Inventory inventory1;
-        Store store;
+    {  // member 
+        public Player player;
+        public UserInterface UI;
+        public Store store;
+        public Day day;
         private bool endCondition = false;
-        public int endDate;
 
 
         //constructor
-        public Game(Day day,Inventory inventory1, Store store)
+        public Game()
         {
-            this.day = day;
-            this.inventory1 = inventory1;
-            this.store = store;
+            Lemon item1 = new Lemon();
+            Sugar item2 = new Sugar();
+            Ice item3 = new Ice();
+            Cup item4 = new Cup();
+            this.day = new Day();
+            this.store = new Store(item1, item2, item3, item4);
+            this.player = new Player("Player1", store, item1, item2, item3, item4);
+            this.UI = new UserInterface(player, store, day);
 
         }
+
 
         //methods
 
@@ -30,8 +36,8 @@ namespace LemonadeStand
         {
             UI.DisplayFaq();
             // ask game type 2 player or 1 player if add later
-            SetPlayer1Name();
-            SetEndDate();
+            AskToChoosePlayerName();
+            AskToChooseEndDate();
             do
             {
                 RunRound();
@@ -39,50 +45,68 @@ namespace LemonadeStand
         }
         void RunRound()
         {
-            ClearConsoleLog();
-            ChooseBuyingOptions();
+            UI.ClearConsoleLog();
+            AskToChooseBuyingOptions();
             //recipe
             CheckIfReadyToContinueToSelling();
 
-
-
             // runs the lemonade stand days
         }
-       
-        void DisplayRoundInfo()
+        public void AskToChoosePlayerName()
         {
-            ClearConsoleLog();
-            UI.DisplayDay();
-            UI.DisplayWeatherToday();
-            UI.DisplayPlayer1Money();
-            UI.DisplayPlayer1Inventory();
+            UI.DisplayPlayerNameOption();
+            player.SetPlayerInput();
+            player.name = player.input;
         }
-        void ClearConsoleLog()
+        public void AskToChooseEndDate()
         {
-            Console.Clear();
+            UI.DisplayEndDateOption();
+            player.SetPlayerInput();
+            player.chosenEndDate = Convert.ToInt32(player.input);
+            CheckEndDateChoie();
         }
         void CheckEndDateChoie()
         {
-            if (player1.chosenEndDate > 50)
+            if (player.chosenEndDate > 50)
             {
                 UI.DisplayIncorrectChoice();
-                SetEndDate();
+                AskToChooseEndDate();
             }
         }
-        void DisplayIncorrectOption()
+
+        void CheckMoneyForItem1()
         {
-            ClearConsoleLog();
-            UI.DisplayIncorrectChoice();
-            UI.DisplayPressToContinue();
-            UI.GetUserInput();
+            if (player.piggyBank.money < store.item1Cost)
+            {
+                UI.NotifyLackOfMoney();
+
+            }
+            else if (player.piggyBank.money >= store.item1Cost)
+            {
+                player.BuyItem1();
+            }
         }
-        void ChooseBuyingOptions()
+        public void CheckIfReadyToContinueToSelling()
         {
-            ClearConsoleLog();
-            DisplayRoundInfo();
+            UI.DisplayContinueToSellingOptions();
+            player.SetPlayerInput();
+            switch (player.input)
+            {
+                case "1":
+                    AskToChooseBuyingOptions();
+                    break;
+                case "2":
+                    UI.DisplayContinueToSelling();
+                    break;
+            }
+        }
+        public void AskToChooseBuyingOptions()
+        {
+            UI.ClearConsoleLog();
+            UI.DisplayRoundInfo();
             UI.DisplayStoreOptions();
-            UI.GetUserInput();
-            switch (UI.userInput)
+            player.SetPlayerInput();
+            switch (player.input)
             {
                 case "1":
                     CheckMoneyForItem1();
@@ -97,60 +121,61 @@ namespace LemonadeStand
                     CheckMoneyForItem4();
                     break;
                 case "5":
-                    ChooseItemBundleSelection();
+                    AskToChooseItemBundleSelection();
                     break;
                 case "6":
-                    ChooseToKeepBuying();
+                    AskToChooseIfStillBuying();
                     break;
                 default:
-                    DisplayIncorrectOption();
+                    UI.DisplayIncorrectOption();
+                    player.SetPlayerInput();
                     break;
             }
-            ChooseBuyingOptions();
+            AskToChooseBuyingOptions();
 
         }
-        void ChooseItemBundleSelection()
+        void AskToChooseItemBundleSelection()
         {
-            ClearConsoleLog();
-            DisplayRoundInfo();
+            UI.ClearConsoleLog();
+            UI.DisplayRoundInfo();
             UI.DisplayItemBundles();
-            UI.GetUserInput();
-            switch (UI.userInput)
+            player.SetPlayerInput();
+            switch (player.input)
             {
                 case "1":
-                    ChooseItem1Bundle();
+                    AskToChooseItem1Bundle();
                     break;
                 case "2":
-                    ChooseItem2Bundle();
+                    AskToChooseItem2Bundle();
                     break;
                 case "3":
-                    ChooseItem3Bundle();
+                    AskToChooseItem3Bundle();
                     break;
                 case "4":
-                    ChooseItem4Bundle();
+                    AskToChooseItem4Bundle();
                     break;
                 case "5":
-                    ChooseBuyingOptions();
+                    AskToChooseBuyingOptions();
                     break;
                 case "6":
-                    ClearConsoleLog();
+                    UI.ClearConsoleLog();
                     UI.DisplayPlayer1Inventory();
                     UI.DisplayPressToContinue();
                     break;
                 default:
-                    DisplayIncorrectOption();
+                    UI.DisplayIncorrectOption();
                     break;
             }
-            ChooseItemBundleSelection();
+            AskToChooseItemBundleSelection();
 
         }
-        void ChooseItem1Bundle()
+        void AskToChooseItem1Bundle()
         {
-            ClearConsoleLog();
-            DisplayRoundInfo();
+            UI.ClearConsoleLog();
+            UI.DisplayRoundInfo();
             UI.DisplayItem1Bundles();
-            UI.GetUserInput();
-            switch (UI.userInput)
+            player.SetPlayerInput();
+            switch (player.input)
             {
                 case "1":
                     CheckMoneyForItem1Bundle1();
@@ -162,26 +187,26 @@ namespace LemonadeStand
                     CheckMoneyForItem1Bundle3();
                     break;
                 case "4":
-                    ChooseItemBundleSelection();
+                    AskToChooseItemBundleSelection();
                     break;
                 case "5":
-                    ClearConsoleLog();
+                    UI.ClearConsoleLog();
                     UI.DisplayPlayer1Inventory();
                     UI.DisplayPressToContinue();
                     break;
                 default:
-                    DisplayIncorrectOption();
+                    UI.DisplayIncorrectOption();
                     break;
             }
-            ChooseItem1Bundle();
+            AskToChooseItem1Bundle();
         }
-        void ChooseItem2Bundle()
+        void AskToChooseItem2Bundle()
         {
-            ClearConsoleLog();
-            DisplayRoundInfo();
+            UI.ClearConsoleLog();
+            UI.DisplayRoundInfo();
             UI.DisplayItem2Bundles();
-            UI.GetUserInput();
-            switch (UI.userInput)
+            player.SetPlayerInput();
+            switch (player.input)
             {
                 case "1":
                     CheckMoneyForItem2Bundle1();
@@ -193,26 +218,26 @@ namespace LemonadeStand
                     CheckMoneyForItem2Bundle3();
                     break;
                 case "4":
-                    ChooseItemBundleSelection();
+                    AskToChooseItemBundleSelection();
                     break;
                 case "5":
-                    ClearConsoleLog();
+                    UI.ClearConsoleLog();
                     UI.DisplayPlayer1Inventory();
                     UI.DisplayPressToContinue();
                     break;
                 default:
-                    DisplayIncorrectOption();
+                    UI.DisplayIncorrectOption();
                     break;
             }
-            ChooseItem2Bundle();
+            AskToChooseItem2Bundle();
         }
-        void ChooseItem3Bundle()
+        void AskToChooseItem3Bundle()
         {
-            ClearConsoleLog();
-            DisplayRoundInfo();
+            UI.ClearConsoleLog();
+            UI.DisplayRoundInfo();
             UI.DisplayItem3Bundles();
-            UI.GetUserInput();
-            switch (UI.userInput)
+            player.SetPlayerInput();
+            switch (player.input)
             {
                 case "1":
                     CheckMoneyForItem3Bundle1();
@@ -224,26 +249,26 @@ namespace LemonadeStand
                     CheckMoneyForItem3Bundle3();
                     break;
                 case "4":
-                    ChooseItemBundleSelection();
+                    AskToChooseItemBundleSelection();
                     break;
                 case "5":
-                    ClearConsoleLog();
+                    UI.ClearConsoleLog();
                     UI.DisplayPlayer1Inventory();
                     UI.DisplayPressToContinue();
                     break;
                 default:
-                    DisplayIncorrectOption();
+                    UI.DisplayIncorrectOption();
                     break;
             }
-            ChooseItem3Bundle();
+            AskToChooseItem3Bundle();
         }
-        void ChooseItem4Bundle()
+        void AskToChooseItem4Bundle()
         {
-            ClearConsoleLog();
-            DisplayRoundInfo();
+            UI.ClearConsoleLog();
+            UI.DisplayRoundInfo();
             UI.DisplayItem4Bundles();
-            UI.GetUserInput();
-            switch (UI.userInput)
+            player.SetPlayerInput();
+            switch (player.input)
             {
                 case "1":
                     CheckMoneyForItem4Bundle1();
@@ -255,333 +280,206 @@ namespace LemonadeStand
                     CheckMoneyForItem4Bundle3();
                     break;
                 case "4":
-                    ChooseItemBundleSelection();
+                    AskToChooseItemBundleSelection();
                     break;
                 case "5":
-                    ClearConsoleLog();
+                    UI.ClearConsoleLog();
                     UI.DisplayPlayer1Inventory();
                     UI.DisplayPressToContinue();
                     break;
                 default:
-                    DisplayIncorrectOption();
+                    UI.DisplayIncorrectOption();
                     break;
             }
-            ChooseItem4Bundle();
+            AskToChooseItem4Bundle();
         }
-        void BuyItem1Bundle1()
-        {
-            player1.money -= store.item1Bundle1Cost;
-            inventory1.item1Amount += store.bundle1Amount;
-        }
+
         void CheckMoneyForItem1Bundle1()
         {
-            if (player1.money < store.item1Bundle1Cost)
+            if (player.piggyBank.money < store.item1Bundle1Cost)
             {
-                NotifyLackOfMoney();
+                UI.NotifyLackOfMoney();
             }
-            else if (player1.money >= store.item1Bundle1Cost)
+            else if (player.piggyBank.money >= store.item1Bundle1Cost)
             {
-                BuyItem1Bundle1();
+                player.BuyItem1Bundle1();
             }
-        }
-        void BuyItem1Bundle2()
-        {
-            player1.money -= store.item1Bundle2Cost;
-            inventory1.item1Amount += store.bundle2Amount;
         }
         void CheckMoneyForItem1Bundle2()
         {
-            if (player1.money < store.item1Bundle2Cost)
+            if (player.piggyBank.money < store.item1Bundle2Cost)
             {
-                NotifyLackOfMoney();
+                UI.NotifyLackOfMoney();
             }
-            else if (player1.money >= store.item1Bundle2Cost)
+            else if (player.piggyBank.money >= store.item1Bundle2Cost)
             {
-                BuyItem1Bundle2();
+                player.BuyItem1Bundle2();
             }
-        }
-        void BuyItem1Bundle3()
-        {
-            player1.money -= store.item1Bundle3Cost;
-            inventory1.item1Amount += store.bundle3Amount;
         }
         void CheckMoneyForItem1Bundle3()
         {
-            if (player1.money < store.item1Bundle3Cost)
+            if (player.piggyBank.money < store.item1Bundle3Cost)
             {
-                NotifyLackOfMoney();
+                UI.NotifyLackOfMoney();
             }
-            else if (player1.money >= store.item1Bundle3Cost)
+            else if (player.piggyBank.money >= store.item1Bundle3Cost)
             {
-                BuyItem1Bundle3();
+                player.BuyItem1Bundle3();
             }
-        }
-        void BuyItem2Bundle1()
-        {
-            player1.money -= store.item2Bundle1Cost;
-            inventory1.item2Amount += store.bundle1Amount;
         }
         void CheckMoneyForItem2Bundle1()
         {
-            if (player1.money < store.item2Bundle1Cost)
+            if (player.piggyBank.money < store.item2Bundle1Cost)
             {
-                NotifyLackOfMoney();
+                UI.NotifyLackOfMoney();
             }
-            else if (player1.money >= store.item2Bundle1Cost)
+            else if (player.piggyBank.money >= store.item2Bundle1Cost)
             {
-                BuyItem2Bundle1();
+                player.BuyItem2Bundle1();
             }
-        }
-        void BuyItem2Bundle2()
-        {
-            player1.money -= store.item2Bundle2Cost;
-            inventory1.item2Amount += store.bundle2Amount;
         }
         void CheckMoneyForItem2Bundle2()
         {
-            if (player1.money < store.item2Bundle2Cost)
+            if (player.piggyBank.money < store.item2Bundle2Cost)
             {
-                NotifyLackOfMoney();
+                UI.NotifyLackOfMoney();
             }
-            else if (player1.money >= store.item2Bundle2Cost)
+            else if (player.piggyBank.money >= store.item2Bundle2Cost)
             {
-                BuyItem2Bundle2();
+                player.BuyItem2Bundle2();
             }
-        }
-        void BuyItem2Bundle3()
-        {
-            player1.money -= store.item1Bundle3Cost;
-            inventory1.item2Amount += store.bundle3Amount;
         }
         void CheckMoneyForItem2Bundle3()
         {
-            if (player1.money < store.item2Bundle3Cost)
+            if (player.piggyBank.money < store.item2Bundle3Cost)
             {
-                NotifyLackOfMoney();
+                UI.NotifyLackOfMoney();
             }
-            else if (player1.money >= store.item2Bundle3Cost)
+            else if (player.piggyBank.money >= store.item2Bundle3Cost)
             {
-                BuyItem2Bundle3();
+                player.BuyItem2Bundle3();
             }
-        }
-        void BuyItem3Bundle1()
-        {
-            player1.money -= store.item3Bundle1Cost;
-            inventory1.item3Amount += store.bundle1Amount;
         }
         void CheckMoneyForItem3Bundle1()
         {
-            if (player1.money < store.item3Bundle1Cost)
+            if (player.piggyBank.money < store.item3Bundle1Cost)
             {
-                NotifyLackOfMoney();
+                UI.NotifyLackOfMoney();
             }
-            else if (player1.money >= store.item3Bundle1Cost)
+            else if (player.piggyBank.money >= store.item3Bundle1Cost)
             {
-                BuyItem3Bundle1();
+                player.BuyItem3Bundle1();
             }
-        }
-        void BuyItem3Bundle2()
-        {
-            player1.money -= store.item3Bundle2Cost;
-            inventory1.item3Amount += store.bundle2Amount;
         }
         void CheckMoneyForItem3Bundle2()
         {
-            if (player1.money < store.item3Bundle2Cost)
+            if (player.piggyBank.money < store.item3Bundle2Cost)
             {
-                NotifyLackOfMoney();
+                UI.NotifyLackOfMoney();
             }
-            else if (player1.money >= store.item3Bundle2Cost)
+            else if (player.piggyBank.money >= store.item3Bundle2Cost)
             {
-                BuyItem3Bundle2();
+                player.BuyItem3Bundle2();
             }
-        }
-        void BuyItem3Bundle3()
-        {
-            player1.money -= store.item3Bundle3Cost;
-            inventory1.item3Amount += store.bundle3Amount;
         }
         void CheckMoneyForItem3Bundle3()
         {
-            if (player1.money < store.item3Bundle3Cost)
+            if (player.piggyBank.money < store.item3Bundle3Cost)
             {
-                NotifyLackOfMoney();
+                UI.NotifyLackOfMoney();
             }
-            else if (player1.money >= store.item3Bundle3Cost)
+            else if (player.piggyBank.money >= store.item3Bundle3Cost)
             {
-                BuyItem3Bundle3();
+                player.BuyItem3Bundle3();
             }
-        }
-        void BuyItem4Bundle1()
-        {
-            player1.money -= store.item4Bundle1Cost;
-            inventory1.item4Amount += store.bundle1Amount;
         }
         void CheckMoneyForItem4Bundle1()
         {
-            if (player1.money < store.item4Bundle1Cost)
+            if (player.piggyBank.money < store.item4Bundle1Cost)
             {
-                NotifyLackOfMoney();
+                UI.NotifyLackOfMoney();
             }
-            else if (player1.money >= store.item4Bundle1Cost)
+            else if (player.piggyBank.money >= store.item4Bundle1Cost)
             {
-                BuyItem4Bundle1();
+                player.BuyItem4Bundle1();
             }
-        }
-        void BuyItem4Bundle2()
-        {
-            player1.money -= store.item4Bundle2Cost;
-            inventory1.item4Amount += store.bundle2Amount;
         }
         void CheckMoneyForItem4Bundle2()
         {
-            if (player1.money < store.item4Bundle2Cost)
+            if (player.piggyBank.money < store.item4Bundle2Cost)
             {
-                NotifyLackOfMoney();
+                UI.NotifyLackOfMoney();
             }
-            else if (player1.money >= store.item4Bundle2Cost)
+            else if (player.piggyBank.money >= store.item4Bundle2Cost)
             {
-                BuyItem4Bundle2();
+                player.BuyItem4Bundle2();
             }
-        }
-        void BuyItem4Bundle3()
-        {
-            player1.money -= store.item4Bundle3Cost;
-            inventory1.item4Amount += store.bundle3Amount;
         }
         void CheckMoneyForItem4Bundle3()
         {
-            if (player1.money < store.item4Bundle3Cost)
+            if (player.piggyBank.money < store.item4Bundle3Cost)
             {
-                NotifyLackOfMoney();
+                UI.NotifyLackOfMoney();
             }
-            else if (player1.money >= store.item4Bundle3Cost)
+            else if (player.piggyBank.money >= store.item4Bundle3Cost)
             {
-                BuyItem4Bundle3();
+                player.BuyItem4Bundle3();
             }
         }
-        void ChooseToKeepBuying()
+        void AskToChooseIfStillBuying()
         {
-            ClearConsoleLog();
+            UI.ClearConsoleLog();
             UI.DisplayPlayer1Inventory();
             UI.DisplayFinishBuyingOption();
-            UI.GetUserInput();
-            switch (UI.userInput)
+            player.SetPlayerInput();
+            switch (player.input)
             {
                 case "1":
-                    ChooseBuyingOptions();
+                    AskToChooseBuyingOptions();
                     break;
                 case "2":
                     break;
                 default:
                     UI.DisplayIncorrectChoice();
-                    ChooseToKeepBuying();
+                    AskToChooseIfStillBuying();
                     break;
             }
         }
-        void CheckMoneyForItem1()
-        {
-            if (player1.money < store.item1Cost)
-            {
-                NotifyLackOfMoney();
-            }
-            else if (player1.money >= store.item1Cost)
-            {
-                BuyItem1();
-            }
-        }
+       
         void CheckMoneyForItem2()
         {
-            if (player1.money < store.item2Cost)
+            if (player.piggyBank.money < store.item2Cost)
             {
-                NotifyLackOfMoney();
+                UI.NotifyLackOfMoney();
             }
-            else if (player1.money >= store.item2Cost)
+            else if (player.piggyBank.money >= store.item2Cost)
             {
-                BuyItem2();
+                player.BuyItem2();
             }
         }
         void CheckMoneyForItem3()
         {
-            if (player1.money < store.item3Cost)
+            if (player.piggyBank.money < store.item3Cost)
             {
-                NotifyLackOfMoney();
+                UI.NotifyLackOfMoney();
             }
-            else if (player1.money >= store.item3Cost)
+            else if (player.piggyBank.money >= store.item3Cost)
             {
-                BuyItem3();
+                player.BuyItem3();
             }
         }
         void CheckMoneyForItem4()
         {
-            if (player1.money < store.item4Cost)
+            if (player.piggyBank.money < store.item4Cost)
             {
-                NotifyLackOfMoney();
+                UI.NotifyLackOfMoney();
             }
-            else if (player1.money >= store.item4Cost)
+            else if (player.piggyBank.money >= store.item4Cost)
             {
-                BuyItem4();
+                player.BuyItem4();
             }
         }
-        void NotifyLackOfMoney()
-        {
-            ClearConsoleLog();
-            UI.DisplayLackOfMoney();
-            UI.DisplayPressToContinue();
-            UI.GetUserInput();
-        }
-        void BuyItem1()
-        {
-            UpdateItem1InventorySingle();
-            DeductMoneyForItem1();
-        }
-        void BuyItem2()
-        {
-            UpdateItem2InventorySingle();
-            DeductMoneyForItem2();
-        }
-        void BuyItem3()
-        {
-            UpdateItem3InventorySingle();
-            DeductMoneyForItem3();
-        }
-        void BuyItem4()
-        {
-            UpdateItem4InventorySingle();
-            DeductMoneyForItem4();
-        }
-        void DeductMoneyForItem1()
-        {
-            player1.money -= store.item1Cost;
-        }
-        void DeductMoneyForItem2()
-        {
-            player1.money -= store.item2Cost;
-        }
-        void DeductMoneyForItem3()
-        {
-            player1.money -= store.item3Cost;
-        }
-        void DeductMoneyForItem4()
-        {
-            player1.money -= store.item4Cost;
-        }
-        void UpdateItem1InventorySingle()
-        {
-            (inventory1.item1Amount)++;
-        }
-        void UpdateItem2InventorySingle()
-        {
-            (inventory1.item2Amount)++;
-        }
-        void UpdateItem3InventorySingle()
-        {
-            (inventory1.item3Amount)++;
-        }
-        void UpdateItem4InventorySingle()
-        {
-            (inventory1.item4Amount)++;
-        }
+
         void CheckEndingConditon()
         {
             // when it hits game.days (Amount of days they chose)

@@ -26,10 +26,10 @@ namespace LemonadeStand
         public decimal bundle1Discount = 0.1M;
         public decimal bundle2Discount = 0.2M;
         public decimal bundle3Discount = 0.4M;
-        private object item1;
-        private object item2;
-        private object item3;
-        private object item4;
+        public object item1;
+        public object item2;
+        public object item3;
+        public object item4;
         public string item1Name;
         public string item2Name;
         public string item3Name;
@@ -77,5 +77,7 @@ namespace LemonadeStand
                 item4
             };
         } 
+
+
     }
 }

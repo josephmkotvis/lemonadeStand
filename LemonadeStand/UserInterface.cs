@@ -6,33 +6,59 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    public static class UserInterface
+    class UserInterface
     {
         // member variables
-  
-        // move to playerinput
-        
-
+        Player player;
+        Store store;
+        Day day;
         // make UI into a static
 
         // constructor
-
-        public static void DisplayPlayerNameOption()
+        public UserInterface(Player player,Store store,Day day)
         {
-            Console.WriteLine(Environment.NewLine + "What would you like your name to be?");
+            this.player = player;
+            this.store = store;
+            this.day = day;
         }
-
-        public static void DisplayFaq()
+        //methods
+        public  void ClearConsoleLog()
+        {
+            Console.Clear();
+        }
+        public void DisplayRoundInfo()
+        {
+            DisplayDay();
+            DisplayWeatherToday();
+            DisplayPlayer1Money();
+            DisplayPlayer1Inventory();
+        }
+        public  void NotifyLackOfMoney()
+        {
+            DisplayLackOfMoney();
+            DisplayPressToContinue();
+        }
+        public  void DisplayIncorrectOption()
+        {
+            ClearConsoleLog();
+            DisplayIncorrectChoice();
+            DisplayPressToContinue();
+        }
+        public void DisplayPlayerNameOption()
+        {
+            Console.WriteLine(Environment.NewLine + "What is " + player.name + "'s name?");
+        }
+        public void DisplayFaq()
         {
             Console.WriteLine(Environment.NewLine + "This is how to play blah blah");
         }
-        public static void DisplayPlayer1Inventory()
+        public void DisplayPlayer1Inventory()
         {
-            Console.WriteLine(Environment.NewLine + "" + Player.name + "'s inventory consists of: " + Environment.NewLine + + Inventory.item1Amount + " " + inventory.item1name + "(s), " + Environment.NewLine + +  inventory.item2Amount + " "  + inventory.item2name + "(s), " + Environment.NewLine + + inventory.item3Amount + " " + inventory.item3name + "(s), " + Environment.NewLine + + inventory.item4Amount + " " + inventory.item4name + "(s). ");
+            Console.WriteLine(Environment.NewLine + "" + player.name + "'s inventory consists of: " + Environment.NewLine + + player.inventory.item1Amount + " " + player.inventory.item1name + "(s), " + Environment.NewLine + +  player.inventory.item2Amount + " "  + player.inventory.item2name + "(s), " + Environment.NewLine + + player.inventory.item3Amount + " " + player.inventory.item3name + "(s), " + Environment.NewLine + + player.inventory.item4Amount + " " + player.inventory.item4name + "(s). ");
         }
-        public static void DisplayPlayer1Money()
+        public void DisplayPlayer1Money()
         {
-            Console.WriteLine(Environment.NewLine + Player.name + " currently has " + PiggyBank.money + " in the piggybank" );
+            Console.WriteLine(Environment.NewLine + player.name + " currently has " + player.piggyBank.money + " in the piggybank" );
         }
         public void DisplayStoreOptions()
         {
@@ -69,7 +95,7 @@ namespace LemonadeStand
 
         public void DisplayDay()
         {
-            Console.WriteLine(Environment.NewLine + "You are on day " + day.currentDay + " out of " + player1.chosenEndDate + "." );
+            Console.WriteLine(Environment.NewLine + "You are on day " + day.currentDay + " out of " + player.chosenEndDate + "." );
         }
         public void DisplayWeatherToday()
         {
@@ -86,19 +112,19 @@ namespace LemonadeStand
         }
         public void DisplayItem1RecipeOption()
         {
-            Console.WriteLine(Environment.NewLine + "How many " + inventory.item1name + " out of " + inventory.item1Amount + " would you like to use? (0-" + inventory.item1Amount + ")");
+            Console.WriteLine(Environment.NewLine + "How many " + player.inventory.item1name + " out of " + player.inventory.item1Amount + " would you like to use? (0-" + player.inventory.item1Amount + ")");
         }
         public void DisplayItem2RecipeOption()
         {
-            Console.WriteLine(Environment.NewLine + "How many " + inventory.item2name + " out of " + inventory.item2Amount + " would you like to use? (0-" + inventory.item2Amount + ")");
+            Console.WriteLine(Environment.NewLine + "How many " + player.inventory.item2name + " out of " + player.inventory.item2Amount + " would you like to use? (0-" + player.inventory.item2Amount + ")");
         }
         public void DisplayItem3RecipeOption()
         {
-            Console.WriteLine(Environment.NewLine + "How many " + inventory.item3name + " out of " + inventory.item3Amount + " would you like to use? (0-" + inventory.item3Amount + ")");
+            Console.WriteLine(Environment.NewLine + "How many " + player.inventory.item3name + " out of " + player.inventory.item3Amount + " would you like to use? (0-" + player.inventory.item3Amount + ")");
         }
         public void DisplayItem4RecipeOption()
         {
-            Console.WriteLine(Environment.NewLine + "How many " + inventory.item4name + " out of " + inventory.item4Amount + " would you like to use? (0-" + inventory.item4Amount + ")");
+            Console.WriteLine(Environment.NewLine + "How many " + player.inventory.item4name + " out of " + player.inventory.item4Amount + " would you like to use? (0-" + player.inventory.item4Amount + ")");
         }
         public void DisplayCostOptions()
         {
@@ -106,7 +132,7 @@ namespace LemonadeStand
         }
         public void DisplayRoundStart()
         {
-            Console.WriteLine(Environment.NewLine + "Your recipe consists of: " + Environment.NewLine + +player1.item1RecipeAmount + " " + inventory.item1name + "(s)." + Environment.NewLine + +player1.item2RecipeAmount + " " + inventory.item2name + "(s)." + Environment.NewLine + +player1.item3RecipeAmount + " " + inventory.item3name + "(s).");
+            Console.WriteLine(Environment.NewLine + "Your recipe consists of: " + Environment.NewLine + +player.recipeBook.item1RecipeAmount + " " + player.inventory.item1name + "(s)." + Environment.NewLine + +player.recipeBook.item2RecipeAmount + " " + player.inventory.item2name + "(s)." + Environment.NewLine + +player.recipeBook.item3RecipeAmount + " " + player.inventory.item3name + "(s).");
         }
         public void DisplayRoundResults()
         {
@@ -165,7 +191,7 @@ namespace LemonadeStand
         {
             //Displays the amount of people that could be buying compared to how many did
         }
-        public static void DisplayEndDateOption()
+        public void DisplayEndDateOption()
         {
             Console.WriteLine(Environment.NewLine + "How many days would you like to play? 1-50.");
         }

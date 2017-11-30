@@ -8,7 +8,6 @@ namespace LemonadeStand
 {
     class Inventory
     {
-        string owner;
         public object item1;
         public object item2;
         public object item3;
@@ -21,10 +20,10 @@ namespace LemonadeStand
         public decimal item2Amount = 0;
         public decimal item3Amount = 0;
         public decimal item4Amount = 0;
+        Store store;
 
-        public Inventory(string owner, Lemon item1, Sugar item2, Ice item3, Cup item4)
+        public Inventory( Lemon item1, Sugar item2, Ice item3, Cup item4, Store store)
         {
-            this.owner = owner;
             this.item1 = item1;
             this.item2 = item2;
             this.item3 = item3;
@@ -33,6 +32,7 @@ namespace LemonadeStand
             this.item2name = item2.name;
             this.item3name = item3.name;
             this.item4name = item4.name;
+            this.store = store;
         }
         void GetInventoryInfos()
         {
@@ -43,6 +43,71 @@ namespace LemonadeStand
                 item3name,
                 item4name
             };
+        }
+
+        public void UpdateItem1InventorySingle()
+        {
+            (item1Amount)++;
+        }
+        public void UpdateItem2InventorySingle()
+        {
+            (item2Amount)++;
+        }
+        public void UpdateItem3InventorySingle()
+        {
+            (item3Amount)++;
+        }
+        public void UpdateItem4InventorySingle()
+        {
+            (item4Amount)++;
+        }
+        public void UpdateItem1FromBundle1()
+        {
+            item1Amount += store.bundle1Amount;
+        }
+        public void UpdateItem1FromBundle2()
+        {
+            item1Amount += store.bundle2Amount;
+        }
+        public void UpdateItem1FromBundle3()
+        {
+            item1Amount += store.bundle3Amount;
+        }
+        public void UpdateItem2FromBundle1()
+        {
+            item2Amount += store.bundle1Amount;
+        }
+        public void UpdateItem2FromBundle2()
+        {
+            item2Amount += store.bundle2Amount;
+        }
+        public void UpdateItem2FromBundle3()
+        {
+            item2Amount += store.bundle3Amount;
+        }
+        public void UpdateItem3FromBundle1()
+        {
+            item3Amount += store.bundle1Amount;
+        }
+        public void UpdateItem3FromBundle2()
+        {
+            item3Amount += store.bundle2Amount;
+        }
+        public void UpdateItem3FromBundle3()
+        {
+            item3Amount += store.bundle3Amount;
+        }
+        public void UpdateItem4FromBundle1()
+        {
+            item4Amount += store.bundle1Amount;
+        }
+        public void UpdateItem4FromBundle2()
+        {
+            item4Amount += store.bundle2Amount;
+        }
+        public void UpdateItem4FromBundle3()
+        {
+            item4Amount += store.bundle3Amount;
         }
     }
 }
