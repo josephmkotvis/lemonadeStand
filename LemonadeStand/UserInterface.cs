@@ -123,6 +123,10 @@ namespace LemonadeStand
         {
             Console.WriteLine("Press C to continue to next step");
         }
+        public void DisplayCostOfProduct()
+        {
+            Console.WriteLine("The current cost for each one of your products is" + player.recipeBook.cost + ".");
+        }
         public void DisplayPlayerRecipe()
         {
             Console.WriteLine(Environment.NewLine + "" + player.name + "'s recipe consists of: " + Environment.NewLine + +player.recipeBook.item1RecipeAmount + " " + player.inventory.item1name + "(s), " + Environment.NewLine + +player.recipeBook.item2RecipeAmount + " " + player.inventory.item2name + "(s), " + Environment.NewLine + +player.recipeBook.item3RecipeAmount + " " + player.inventory.item3name + "(s), " + Environment.NewLine + +player.recipeBook.item4RecipeAmount + " " + player.inventory.item4name + "(s). ");

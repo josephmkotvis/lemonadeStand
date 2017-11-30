@@ -23,7 +23,7 @@ namespace LemonadeStand
         public double MerchandiseSold = 0;
         Store store;
 
-        public Inventory( Lemon item1, Sugar item2, Ice item3, Cup item4, Store store)
+        public Inventory( Cup item1, Lemon item2, Sugar item3, Ice item4, Store store)
         {
             this.item1 = item1;
             this.item2 = item2;

@@ -46,7 +46,7 @@
     <Compile Include="AttendanceList.cs" />
     <Compile Include="Banker.cs" />
     <Compile Include="BussinessPerson.cs" />
-    <Compile Include="ComplaintBook.cs" />
+    <Compile Include="ReviewBook.cs" />
     <Compile Include="ConstructionWorker.cs" />
     <Compile Include="Cup.cs" />
     <Compile Include="Customer.cs" />

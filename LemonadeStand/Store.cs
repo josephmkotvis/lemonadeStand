@@ -39,7 +39,7 @@ namespace LemonadeStand
         public double item3Cost;
         public double item4Cost;
 
-        public Store(Lemon item1,Sugar  item2,Ice item3,Cup item4)
+        public Store(Cup item1,Lemon  item2,Sugar item3,Ice item4)
         {
             this.item1 = item1;
             this.item2 = item2;

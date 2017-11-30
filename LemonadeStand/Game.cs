@@ -15,24 +15,22 @@ namespace LemonadeStand
         private bool endCondition = false;
         public Weather weather;
         public Customer customer;
-        public ComplaintBook complaintBook;
+        public ReviewBook complaintBook;
         AttendanceList attendanceList;
 
 
         //constructor
         public Game()
         {
-            Lemon item1 = new Lemon();
-            Sugar item2 = new Sugar();
-            Ice item3 = new Ice();
-            Cup item4 = new Cup();
+            Cup item1 = new Cup();
+            Lemon item2 = new Lemon();
+            Sugar item3 = new Sugar();
+            Ice item4 = new Ice();
             this.day = new Day();
             this.store = new Store(item1, item2, item3, item4);
             this.player = new Player("Player1", store, item1, item2, item3, item4);
             this.weather = new Weather();
-            this.complaintBook = new ComplaintBook();
-            this.attendanceList = new AttendanceList();
-            this.customer = new Customer(player, weather, complaintBook, attendanceList);
+            this.customer = new Customer(player, weather);
             this.UI = new UserInterface(player, store, day);
         }
 
@@ -55,13 +53,29 @@ namespace LemonadeStand
             UI.ClearConsoleLog();
             AskToChooseBuyingOptions();
             PromptToChooseRecipe();
+            AskToChooseProductPrice();
             // runs the lemonade stand days
         }
-
-
-
-
-
+        void AskToChooseProductPrice()
+        {
+            do
+            {
+                UI.DisplayCostOptions();
+                player.SetPlayerInput();
+                CheckPlayerInputForCost();
+                player.recipeBook.cost = (Convert.ToDouble(player.input));
+                UI.DisplayCostOfProduct();
+                CheckIfReady();
+            } while (player.desireToContinue == false);
+            ResetPlayerDesireToConinue();
+            }
+        void CheckPlayerInputForCost()
+        {
+            if ((player.input == "") || (Convert.ToDouble(player.input) > 100) || (Convert.ToDouble(player.input) < 0))
+            {
+                UI.DisplayIncorrectOption();
+            }
+        }
         void AskToChooseRecipe()
         {
             UI.ClearConsoleLog();

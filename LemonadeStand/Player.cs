@@ -15,6 +15,8 @@ namespace LemonadeStand
         public Inventory inventory;
         public RecipeBook recipeBook;
         public bool desireToContinue;
+        public ReviewBook reviewBook;
+        public AttendanceList attendanceList;
         
         // make wallet class
         //wallet says I dont have enough money
@@ -22,13 +24,15 @@ namespace LemonadeStand
         public string input;
         public int chosenEndDate;
         //constructor
-        public Player (string name, Store store, Lemon lemon, Sugar sugar, Ice ice, Cup cup)
+        public Player (string name, Store store, Cup item1, Lemon item2, Sugar item3, Ice item4)
         {
             this.name = name;
             this.store = store;
             this.piggyBank = new PiggyBank(store);
-            this.inventory = new Inventory(lemon, sugar, ice, cup, store);
+            this.inventory = new Inventory(item1, item2, item3, item4, store);
             this.recipeBook = new RecipeBook();
+            this.reviewBook = new ReviewBook();
+            this.attendanceList = new AttendanceList();
         }
 
         //methods

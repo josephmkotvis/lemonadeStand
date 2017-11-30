@@ -13,6 +13,7 @@ namespace LemonadeStand
         public double item2RecipeAmount;
         public double item3RecipeAmount;
         public double item4RecipeAmount;
+        public double cost;
         public void AddToItem1RecipeAmount()
         {
             item1RecipeAmount += playerRecipeChangeNumber;
