@@ -8,33 +8,30 @@ namespace LemonadeStand
 {
     class Customer
     {
-        string favoriteWeatherType;
         string dislikedWeatherType;
-        double favoriteAirTemperature;
         double dislikedAirTemperature;
-        double favoriteWindSpeed;
         double dislikedWindSpeed;
-        double favoritePrecipitation;
         double dislikedPrecipitation;
-        double favoriteObject1Amount;
-        double favoriteObject2Amount;
-        double favoriteObject3Amount;
         double dislikedObject1Amount;
         double dislikedObject2Amount;
         double dislikedObject3Amount;
         public bool decisionToBuy;
-        public bool decisionIsMade;
+        public bool decisionToGo = true;
+       
 
         Player player;
         Weather weather;
         ComplaintBook complaintBook;
+        AttendanceList attendanceList;
 
-        public Customer(Player player, Weather weather, ComplaintBook complaintBook)
+        public Customer(Player player, Weather weather, ComplaintBook complaintBook, AttendanceList attendanceList)
         {
             this.player = player;
             this.weather = weather;
             this.complaintBook = complaintBook;
+            this.attendanceList = attendanceList;
         }
+
         void BuyDrink()
         {
             player.inventory.MerchandiseSold++;
@@ -47,29 +44,29 @@ namespace LemonadeStand
         {
             complaintBook.complaintsAboutFlavor++;
         }
-        void ThinkAboutBuying()
+        void DecideToGo()
         {
-            do
+            ThinkABoutWeatherType();
+            ThinkAboutTemp();
+            ThinkAboutWindSpeed();
+            ThinkAboutPrecipitation();
+            if (decisionToGo == true)
             {
-                ThinkABoutWeatherType();
-                ThinkAboutTemp();
-                ThinkAboutWindSpeed();
-                ThinkAboutPrecipitation();
-            } while (decisionIsMade == false);
-
-        }
-        void MakeDecisionOnBuying()
-        {
-            if (decisionToBuy == false)
-            {
-                DecideToBuy();
-            }
-            else if (decisionToBuy == true)
-            {
-                DecideNotToBuy();
+                ThinkAboutBuying();
             }
         }
         void DecideToBuy()
+        {
+            if (decisionToBuy == true)
+            {
+                AttemptToBuy();
+            }
+            else if (decisionToBuy == false)
+            {
+                DecideNotToBuyFromDislike();
+            }
+        }
+        void AttemptToBuy()
         {
             if (player.inventory.item1Amount == 0)
             {
@@ -80,54 +77,37 @@ namespace LemonadeStand
                 BuyDrink();
             }
         }
-        void DecideNotToBuy()
+        void DecideNotToBuyFromDislike()
         {
             ComplainAboutDislike();
         }
         void ThinkABoutWeatherType()
         {
-            if (weather.weatherType == favoriteWeatherType)
-            {
-                decisionToBuy = true;
-            }
-            else if (weather.weatherType == dislikedWeatherType)
+            if (weather.weatherType == dislikedWeatherType)
             {
                 complaintBook.complaintsAboutWeather++;
-                decisionToBuy = false;
-
+                decisionToGo = false;
             }
         }
         void ThinkAboutTemp()
         {
-            if (weather.airTemperature == favoriteAirTemperature)
+            if (weather.airTemperature == dislikedAirTemperature)
             {
-                decisionToBuy = true;
-            }
-            else if (weather.airTemperature == dislikedAirTemperature)
-            {
-                decisionToBuy = false;
+                decisionToGo = false;
             }
         }
         void ThinkAboutWindSpeed()
         {
-            if (weather.windSpeed == favoriteWindSpeed)
+            if (weather.airTemperature == dislikedWindSpeed)
             {
-                decisionToBuy = true;
-            }
-            else if (weather.airTemperature == dislikedWindSpeed)
-            {
-                decisionToBuy = false;
+                decisionToGo = false;
             }
         }
         void ThinkAboutPrecipitation()
         {
-            if (weather.precipitation == favoritePrecipitation)
-            {
-                decisionToBuy = true;
-            }
             if (weather.precipitation == dislikedPrecipitation)
             {
-                decisionToBuy = false;
+                decisionToGo = false;
             }
 
         }

@@ -16,6 +16,7 @@ namespace LemonadeStand
         public Weather weather;
         public Customer customer;
         public ComplaintBook complaintBook;
+        AttendanceList attendanceList;
 
 
         //constructor
@@ -30,7 +31,8 @@ namespace LemonadeStand
             this.player = new Player("Player1", store, item1, item2, item3, item4);
             this.weather = new Weather();
             this.complaintBook = new ComplaintBook();
-            this.customer = new Customer(player, weather, complaintBook);
+            this.attendanceList = new AttendanceList();
+            this.customer = new Customer(player, weather, complaintBook, attendanceList);
             this.UI = new UserInterface(player, store, day);
         }
 
