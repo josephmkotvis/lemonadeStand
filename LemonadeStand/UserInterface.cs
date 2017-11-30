@@ -9,6 +9,7 @@ namespace LemonadeStand
     class UserInterface
     {
         // member variables
+        public string userInput;
         Player player;
         Store store;
         Day day;
@@ -48,6 +49,11 @@ namespace LemonadeStand
         {
             Console.WriteLine(Environment.NewLine + "What is " + player.name + "'s name?");
         }
+        public string GetUserInput()
+        {
+            userInput = Console.ReadLine();
+            return userInput;
+        }
         public void DisplayFaq()
         {
             Console.WriteLine(Environment.NewLine + "This is how to play blah blah");
@@ -70,7 +76,7 @@ namespace LemonadeStand
         }
         public void DisplayFinishBuyingOption()
         {
-            Console.WriteLine(Environment.NewLine + "Select the number that matches your decision:" + Environment.NewLine + "1)Continue Buying" + Environment.NewLine + "2)Finish Buying" );
+            Console.WriteLine(Environment.NewLine + "Select the number that matches your decision:" + Environment.NewLine + "1)Finish Buying" + Environment.NewLine + "2)Continue Buying" );
         }
         public void DisplayItemBundles()
         {
@@ -92,7 +98,6 @@ namespace LemonadeStand
         {
             Console.WriteLine(Environment.NewLine + "You have chosen to look at the bundle prices for the " + store.item4Name + "." + Environment.NewLine + "Choose the number accordinlgy to the bundle you would like to purhcase:" + Environment.NewLine + "1)" + store.bundle1Amount + " pack for " + store.item4Bundle1Cost + "$," + Environment.NewLine + "2)" + store.bundle2Amount + " pack for " + store.item4Bundle2Cost + "$," + Environment.NewLine + "3)" + store.bundle3Amount + " pack for " + store.item4Bundle3Cost + "$," + Environment.NewLine + "4)Return to choosing which item for bundle options," + Environment.NewLine + "5)To continue.");
         }
-
         public void DisplayDay()
         {
             Console.WriteLine(Environment.NewLine + "You are on day " + day.currentDay + " out of " + player.chosenEndDate + "." );
@@ -109,6 +114,18 @@ namespace LemonadeStand
                 //weathernextday become current weather
                 //weather2ndDay become weathernext day
                 // then do that until the seventh day where that will be randomly generated/
+        }
+        public void DisplayContinuationToRecipe()
+        {
+            Console.WriteLine(Environment.NewLine + "The next step before you start selling your product is to create your recipe." + Environment.NewLine + "We will make it item by item." + Environment.NewLine + "Would you like to continue?" + Environment.NewLine + "1)Yes" + Environment.NewLine + "2)No");
+        }
+        public void DisplayerPressCToContinue()
+        {
+            Console.WriteLine("Press C to continue to next step");
+        }
+        public void DisplayPlayerRecipe()
+        {
+            Console.WriteLine(Environment.NewLine + "" + player.name + "'s recipe consists of: " + Environment.NewLine + +player.recipeBook.item1RecipeAmount + " " + player.inventory.item1name + "(s), " + Environment.NewLine + +player.recipeBook.item2RecipeAmount + " " + player.inventory.item2name + "(s), " + Environment.NewLine + +player.recipeBook.item3RecipeAmount + " " + player.inventory.item3name + "(s), " + Environment.NewLine + +player.recipeBook.item4RecipeAmount + " " + player.inventory.item4name + "(s). ");
         }
         public void DisplayItem1RecipeOption()
         {
@@ -207,9 +224,25 @@ namespace LemonadeStand
         {
             Console.WriteLine(Environment.NewLine + "Now the round will begin.");
         }
-        public void DisplayContinueToSellingOptions()
+        public void DisplayContinueOption()
         {
-            Console.WriteLine(Environment.NewLine + "Would you like to begin selling your product?" + Environment.NewLine + " 1)Continue prepping" + Environment.NewLine + "2)Begin Selling.");
+            Console.WriteLine(Environment.NewLine + "Would you like to continue to the next step?" + Environment.NewLine + "1)Yes" + Environment.NewLine + "2)Not Yet");
+        }
+        public void NotifyLackOfItem1()
+        {
+            Console.WriteLine("You do not have enough of " + player.inventory.item1name + " to add that to your recipe.");
+        }
+        public void NotifyLackOfItem2()
+        {
+            Console.WriteLine("You do not have enough of " + player.inventory.item2name + " to add that to your recipe.");
+        }
+        public void NotifyLackOfItem3()
+        {
+            Console.WriteLine("You do not have enough of " + player.inventory.item3name + " to add that to your recipe.");
+        }
+        public void NotifyLackOfItem4()
+        {
+            Console.WriteLine("You do not have enough of " + player.inventory.item4name + " to add that to your recipe.");
         }
     }
 }

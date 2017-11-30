@@ -16,10 +16,10 @@ namespace LemonadeStand
         public string item2name;
         public string item3name;
         public string item4name;
-        public decimal item1Amount = 0;
-        public decimal item2Amount = 0;
-        public decimal item3Amount = 0;
-        public decimal item4Amount = 0;
+        public double item1Amount = 0;
+        public double item2Amount = 0;
+        public double item3Amount = 0;
+        public double item4Amount = 0;
         Store store;
 
         public Inventory( Lemon item1, Sugar item2, Ice item3, Cup item4, Store store)
@@ -43,6 +43,23 @@ namespace LemonadeStand
                 item3name,
                 item4name
             };
+        }
+        public void DeductItem1InventorySingle()
+        {
+
+            (item1Amount)--;
+        }
+        public void DeductItem2InventorySingle()
+        {
+            (item2Amount)--;
+        }
+        public void DeductItem3InventorySingle()
+        {
+            (item3Amount)--;
+        }
+        public void DeductItem4InventorySingle()
+        {
+            (item4Amount)--;
         }
 
         public void UpdateItem1InventorySingle()

@@ -8,8 +8,26 @@ namespace LemonadeStand
 {
     class RecipeBook
     {
-        public decimal item1RecipeAmount;
-        public decimal item2RecipeAmount;
-        public decimal item3RecipeAmount;
+        public double playerRecipeChangeNumber;
+        public double item1RecipeAmount;
+        public double item2RecipeAmount;
+        public double item3RecipeAmount;
+        public double item4RecipeAmount;
+        public void AddToItem1RecipeAmount()
+        {
+            item1RecipeAmount += playerRecipeChangeNumber;
+        }
+        public void AddToItem2RecipeAmount()
+        {
+            item2RecipeAmount += playerRecipeChangeNumber;
+        }
+        public void AddToItem3RecipeAmount()
+        {
+            item3RecipeAmount += playerRecipeChangeNumber;
+        }
+        public void AddToItem4RecipeAmount()
+        {
+            item4RecipeAmount += playerRecipeChangeNumber;
+        }
     }
 }

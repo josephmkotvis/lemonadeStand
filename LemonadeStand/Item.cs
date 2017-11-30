@@ -10,7 +10,7 @@ namespace LemonadeStand
     {
         // member variables
         public string name;
-        public decimal cost;
+        public double cost;
         // will be a string of objects
         //constructor
         //methods

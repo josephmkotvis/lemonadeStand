@@ -10,7 +10,7 @@ namespace LemonadeStand
     {
         Store store;
 
-        public decimal money = 100;
+        public double money = 100;
         public PiggyBank(Store store)
         {
             this.store = store;

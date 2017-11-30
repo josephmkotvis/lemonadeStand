@@ -20,12 +20,12 @@ namespace LemonadeStand
         public dynamic item4Bundle1Cost;
         public dynamic item4Bundle2Cost;
         public dynamic item4Bundle3Cost;
-        public decimal bundle1Amount = 10;
-        public decimal bundle2Amount = 25;
-        public decimal bundle3Amount = 50;
-        public decimal bundle1Discount = 0.1M;
-        public decimal bundle2Discount = 0.2M;
-        public decimal bundle3Discount = 0.4M;
+        public double bundle1Amount = 10;
+        public double bundle2Amount = 25;
+        public double bundle3Amount = 50;
+        public double bundle1Discount = 0.1;
+        public double bundle2Discount = 0.2;
+        public double bundle3Discount = 0.4;
         public object item1;
         public object item2;
         public object item3;
@@ -34,10 +34,10 @@ namespace LemonadeStand
         public string item2Name;
         public string item3Name;
         public string item4Name;
-        public decimal item1Cost;
-        public decimal item2Cost;
-        public decimal item3Cost;
-        public decimal item4Cost;
+        public double item1Cost;
+        public double item2Cost;
+        public double item3Cost;
+        public double item4Cost;
 
         public Store(Lemon item1,Sugar  item2,Ice item3,Cup item4)
         {

@@ -14,6 +14,7 @@ namespace LemonadeStand
         public Store store;
         public Inventory inventory;
         public RecipeBook recipeBook;
+        public bool desireToContinue;
         
         // make wallet class
         //wallet says I dont have enough money
@@ -36,7 +37,38 @@ namespace LemonadeStand
             input = Console.ReadLine();
             return input;
         }
-
+        public void ChangeItem1Recipe()
+        {
+            if (recipeBook.playerRecipeChangeNumber < 0)
+            {
+                recipeBook.AddToItem1RecipeAmount();
+                inventory.DeductItem1InventorySingle();
+            }
+        }
+        public void ChangeItem2Recipe()
+        {
+            if (recipeBook.playerRecipeChangeNumber < 0)
+            {
+                recipeBook.AddToItem2RecipeAmount();
+                inventory.DeductItem2InventorySingle();
+            }
+        }
+        public void ChangeItem3Recipe()
+        {
+            if (recipeBook.playerRecipeChangeNumber < 0)
+            {
+                recipeBook.AddToItem3RecipeAmount();
+                inventory.DeductItem3InventorySingle();
+            }
+        }
+        public void ChangeItem4Recipe()
+        {
+            if (recipeBook.playerRecipeChangeNumber < 0)
+            {
+                recipeBook.AddToItem4RecipeAmount();
+                inventory.DeductItem4InventorySingle();
+            }
+        }
         public void BuyItem1()
         {
            inventory.UpdateItem1InventorySingle();
