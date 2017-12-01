@@ -19,13 +19,13 @@ namespace LemonadeStand
         public Day day5;
         public Day day6;
         public Day day7;
-        Customer customer1;
-        Customer customer2;
-        Customer customer3;
-        Customer customer4;
-        Customer customer5;
-        Customer customer6;
-        Customer customer7;
+        BussinessPerson customer1;
+        Banker customer2;
+        Millionare customer3;
+        Student customer4;
+        Teacher customer5;
+        Athlete customer6;
+        ConstructionWorker customer7;
         public Weather weather;
         public Customer customer;
         private double startingCustomers = 30;
@@ -46,17 +46,17 @@ namespace LemonadeStand
             this.day6 = new Day();
             this.day7 = new Day();
             this.store = new Store(item1, item2, item3, item4);
-            this.player = new Player("Player1", store, item1, item2, item3, item4);
+            this.player = new Player("Player1", store, item1, item2, item3, item4);     
             this.weather = new Weather();
-            this.customer = new Customer(player, weather);
-            Customer customer1 = new BussinessPerson(player, weather);
-            Customer customer2 = new Banker(player, weather);
-            Customer customer3 = new Millionare(player, weather);
-            Customer customer4 = new Student(player, weather);
-            Customer customer5 = new Teacher(player, weather);
-            Customer customer6 = new Athlete(player, weather);
-            Customer customer7 = new ConstructionWorker(player, weather);
-            this.UI = new UserInterface(player, store, day1, day2, day3, day4, day5, day6, day7);
+            this.customer = new Customer(player, weather, "Customer", "None", 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0);
+            this.customer1 = new BussinessPerson(player, weather, "BussinessPerson", "Sunny", 65, 10, 10, 3, 1, 9, 6, 3, 0, 12, 14, 26);
+            this.customer2 = new Banker(player, weather, "Banker", "Rain", 80, 30, 10, 1, 2, 5, 1, 0, 8, 10, 4, 16);
+            this.customer3 = new Millionare(player, weather, "Millionare", "None", 100, 30, 12, 500, 500, 500 ,500, 0, 0, 0, 0, 0);
+            this.customer4 = new Student(player, weather, "Student", "Hail", 34, 12, 5, 1, 15, 20, 3, 0, 8, 13, 12, 1);
+            this.customer5 = new Teacher(player, weather, "Teacher", "Foggy", 45, 12, 14, 1, 6, 4, 3, 0, 1, 1, 1, 10);
+            this.customer6 = new Athlete(player, weather, "Athlete", "Snow", 10, 18, 2, 1, 4, 0, 25, 0, 2, 3, 0, 10);
+            this.customer7 = new ConstructionWorker(player, weather, "Construction Worker", "Windy", 90, 35, 0, 1, 13, 10, 14, 0, 4, 8, 0, 7);
+            this.UI = new UserInterface(player, store, day1, day2, day3, day4, day5, day6, day7, customer1, customer2, customer3, customer4, customer5, customer6, customer7);
         }
 
 
@@ -66,28 +66,96 @@ namespace LemonadeStand
         {
             UI.DisplayFaq();
             AskToChooseEndDate();
-            // ask game type 2 player or 1 player if add later
             AskToChoosePlayerName();
             SetStartingWeather();
             do
             {
                 RunRound();
+                CheckEndingConditon();
             } while (endCondition == false);
+            UI.DisplayEndDateOption();
         }
         void RunRound()
         {
             RunPreSellingPart();
-            // runs the lemonade stand days
             RunSellingPart();
+            RunPostSellingPart();
+            ResetStats();
 
+        }
+        void RunPostSellingPart()
+        {
+            UI.DisplayMoneyChanges();
+            UI.DisplayCustomerReviews();
+            ResetMoneyGainedThisRound();
             TransferDayWeathers();
+            UpdatCurrentDay();
+            CheckEndingConditon();
+        }
+        void ResetStats()
+        {
+            ResetMoneyGainedThisRound();
+            ResetComplaints();
+            ResetCompliments();
+            ResetAttendance();
+            ResetRecipe();
+            ResetSales();
+        }
+        void ResetSales()
+        {
+            player.inventory.item1Sold = 0;
+            player.inventory.item2Sold = 0;
+            player.inventory.item3Sold = 0;
+            player.inventory.item4Sold = 0;
+            player.inventory.merchandiseSold= 0;
+
+        }
+        void ResetRecipe()
+        {
+            player.recipeBook.item1RecipeAmount = 0;
+            player.recipeBook.item2RecipeAmount = 0;
+            player.recipeBook.item3RecipeAmount = 0;
+            player.recipeBook.item4RecipeAmount = 0;
+            player.recipeBook.cost = 0;
+        }
+        void ResetAttendance()
+        {
+            player.attendanceList.amountOfAllCustomersToAttend = 0;
+        }
+        void ResetCompliments()
+        {
+            player.reviewBook.complimentsAboutObject1 = 0;
+            player.reviewBook.complimentsAboutObject2 = 0;
+            player.reviewBook.complimentsAboutObject3 = 0;
+            player.reviewBook.complimentsAboutObject4 = 0;
+        }
+        void ResetComplaints()
+        {
+            player.reviewBook.complaintsAboutObject1 = 0;
+            player.reviewBook.complaintsAboutObject2 = 0;
+            player.reviewBook.complaintsAboutObject3 = 0;
+            player.reviewBook.complaintsAboutObject4 = 0;
+            player.reviewBook.complaintsAboutFlavor = 0;
+            player.reviewBook.complaintsAboutNoDrinks = 0;
+            player.reviewBook.complaintsAboutWeather = 0;
         }
         void RunSellingPart()
         {
             for (int i = 0; i < amountOfVisitors; i++)
             {
-                ChooseRandomBuyer();
+                    ChooseRandomBuyer();
             }
+            UI.ClearConsoleLog();
+            UI.DisplaySalesResults();
+            player.SetPlayerInput();
+        }
+        void SavePreRoundMoney()
+        {
+            player.piggyBank.preGameMoney=player.piggyBank.money;
+        }
+        void ResetMoneyGainedThisRound()
+        {
+            player.piggyBank.gainedMoney = 0;
         }
         void ChooseRandomBuyer()
         {
@@ -123,11 +191,13 @@ namespace LemonadeStand
         }
         void RunPreSellingPart()
         {
+            SavePreRoundMoney();
             TransferDayWeathers();
             UI.ClearConsoleLog();
             AskToChooseBuyingOptions();
             PromptToChooseRecipe();
             AskToChooseProductPrice();
+            SetAmountOfVisitors();
         }
         void SetStartingWeather()
         {
@@ -400,6 +470,7 @@ namespace LemonadeStand
                 AskToChangeItem3Recipe();
                 AskToChangeItem4Recipe();
                 UI.ClearConsoleLog();
+                UI.DisplayPlayerRecipe();
                 CheckIfReady();
             } while (player.desireToContinue == false);
             ResetPlayerDesireToConinue();
@@ -751,6 +822,7 @@ namespace LemonadeStand
             if (player.piggyBank.money < store.item1Bundle1Cost)
             {
                 UI.NotifyLackOfMoney();
+                player.SetPlayerInput();
             }
             else if (player.piggyBank.money >= store.item1Bundle1Cost)
             {
@@ -762,6 +834,7 @@ namespace LemonadeStand
             if (player.piggyBank.money < store.item1Bundle2Cost)
             {
                 UI.NotifyLackOfMoney();
+                player.SetPlayerInput();
             }
             else if (player.piggyBank.money >= store.item1Bundle2Cost)
             {
@@ -773,6 +846,7 @@ namespace LemonadeStand
             if (player.piggyBank.money < store.item1Bundle3Cost)
             {
                 UI.NotifyLackOfMoney();
+                player.SetPlayerInput();
             }
             else if (player.piggyBank.money >= store.item1Bundle3Cost)
             {
@@ -784,6 +858,7 @@ namespace LemonadeStand
             if (player.piggyBank.money < store.item2Bundle1Cost)
             {
                 UI.NotifyLackOfMoney();
+                player.SetPlayerInput();
             }
             else if (player.piggyBank.money >= store.item2Bundle1Cost)
             {
@@ -795,6 +870,7 @@ namespace LemonadeStand
             if (player.piggyBank.money < store.item2Bundle2Cost)
             {
                 UI.NotifyLackOfMoney();
+                player.SetPlayerInput();
             }
             else if (player.piggyBank.money >= store.item2Bundle2Cost)
             {
@@ -806,6 +882,7 @@ namespace LemonadeStand
             if (player.piggyBank.money < store.item2Bundle3Cost)
             {
                 UI.NotifyLackOfMoney();
+                player.SetPlayerInput();
             }
             else if (player.piggyBank.money >= store.item2Bundle3Cost)
             {
@@ -817,6 +894,7 @@ namespace LemonadeStand
             if (player.piggyBank.money < store.item3Bundle1Cost)
             {
                 UI.NotifyLackOfMoney();
+                player.SetPlayerInput();
             }
             else if (player.piggyBank.money >= store.item3Bundle1Cost)
             {
@@ -828,6 +906,7 @@ namespace LemonadeStand
             if (player.piggyBank.money < store.item3Bundle2Cost)
             {
                 UI.NotifyLackOfMoney();
+                player.SetPlayerInput();
             }
             else if (player.piggyBank.money >= store.item3Bundle2Cost)
             {
@@ -839,6 +918,7 @@ namespace LemonadeStand
             if (player.piggyBank.money < store.item3Bundle3Cost)
             {
                 UI.NotifyLackOfMoney();
+                player.SetPlayerInput();
             }
             else if (player.piggyBank.money >= store.item3Bundle3Cost)
             {
@@ -850,6 +930,7 @@ namespace LemonadeStand
             if (player.piggyBank.money < store.item4Bundle1Cost)
             {
                 UI.NotifyLackOfMoney();
+                player.SetPlayerInput();
             }
             else if (player.piggyBank.money >= store.item4Bundle1Cost)
             {
@@ -861,6 +942,7 @@ namespace LemonadeStand
             if (player.piggyBank.money < store.item4Bundle2Cost)
             {
                 UI.NotifyLackOfMoney();
+                player.SetPlayerInput();
             }
             else if (player.piggyBank.money >= store.item4Bundle2Cost)
             {
@@ -872,6 +954,7 @@ namespace LemonadeStand
             if (player.piggyBank.money < store.item4Bundle3Cost)
             {
                 UI.NotifyLackOfMoney();
+                player.SetPlayerInput();
             }
             else if (player.piggyBank.money >= store.item4Bundle3Cost)
             {
@@ -945,11 +1028,18 @@ namespace LemonadeStand
         }
         void CheckEndingConditon()
         {
-            // when it hits game.days (Amount of days they chose)
+            if (day1.currentDay == player.chosenEndDate)
+            {
+                endCondition = true;
+            }
         }
         void UpdatCurrentDay()
         {
             day1.currentDay++;
+        }
+        void SaveGame()
+        {
+            //save game with sql
         }
     }
 }

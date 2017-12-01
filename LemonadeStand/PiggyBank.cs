@@ -11,6 +11,9 @@ namespace LemonadeStand
         Store store;
 
         public double money = 100;
+        public double gainedMoney = 0;
+        public double preGameMoney;
+        public double totalGainedMoney;
         public PiggyBank(Store store)
         {
             this.store = store;

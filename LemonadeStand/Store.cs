@@ -23,9 +23,9 @@ namespace LemonadeStand
         public double bundle1Amount = 10;
         public double bundle2Amount = 25;
         public double bundle3Amount = 50;
-        public double bundle1Discount = 0.1;
-        public double bundle2Discount = 0.2;
-        public double bundle3Discount = 0.4;
+        public double bundle1Discount = 0.9;
+        public double bundle2Discount = 0.8;
+        public double bundle3Discount = 0.7;
         public object item1;
         public object item2;
         public object item3;

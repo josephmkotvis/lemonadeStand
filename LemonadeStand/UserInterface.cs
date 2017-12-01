@@ -19,10 +19,18 @@ namespace LemonadeStand
         Day day5;
         Day day6;
         Day day7;
+        Customer customer1;
+        Customer customer2;
+        Customer customer3;
+        Customer customer4;
+        Customer customer5;
+        Customer customer6;
+        Customer customer7;
+
         // make UI into a static
 
         // constructor
-        public UserInterface(Player player,Store store,Day day1, Day day2, Day day3, Day day4, Day day5, Day day6, Day day7)
+        public UserInterface(Player player,Store store,Day day1, Day day2, Day day3, Day day4, Day day5, Day day6, Day day7, Customer customer1, Customer customer2, Customer customer3, Customer customer4, Customer customer5, Customer customer6, Customer customer7)
         {
             this.player = player;
             this.store = store;
@@ -33,6 +41,14 @@ namespace LemonadeStand
             this.day5 = day5;
             this.day6 = day6;
             this.day7 = day7;
+            this.customer1 = customer1;
+            this.customer2 = customer2;
+            this.customer3 = customer3;
+            this.customer4 = customer4;
+            this.customer5 = customer5;
+            this.customer6 = customer6;
+            this.customer7 = customer7;
+
         }
         //methods
         public  void ClearConsoleLog()
@@ -158,7 +174,7 @@ namespace LemonadeStand
         }
         public void DisplayCostOptions()
         {
-            Console.WriteLine(Environment.NewLine + " How much would you like to charge for each one of your products? (0$ - 100$)");
+            Console.WriteLine(Environment.NewLine + "How much would you like to charge for each one of your products? (0$ - 100$)");
         }
         public void DisplayRoundStart()
         {
@@ -171,55 +187,32 @@ namespace LemonadeStand
         }
         public void DisplaySalesResults()
         {
-            //Display how many cups were sold
+            Console.WriteLine("You sold " + player.inventory.merchandiseSold + " products out of the " + player.attendanceList.amountOfAllCustomersToAttend + " people who showed up.");
         }
         public void DisplayInventoryChanges()
         {
-            // Display how much the inventory change
+            Console.WriteLine(Environment.NewLine + "Your new inventory after the round is as shown : " + Environment.NewLine + +player.inventory.item1Amount + " " + player.inventory.item1name + "(s), " + Environment.NewLine + +player.inventory.item2Amount + " " + player.inventory.item2name + "(s), " + Environment.NewLine + +player.inventory.item3Amount + " " + player.inventory.item3name + "(s), " + Environment.NewLine + +player.inventory.item4Amount + " " + player.inventory.item4name + "(s). ");
         }
         public void DisplayMoneyChanges()
         {
-            // Display how the change in money
+            Console.WriteLine(Environment.NewLine + "You have gained " +player.piggyBank.gainedMoney + "$ this round.");
         }
         public void DisplayCustomerReviews()
         {
-            // Will display the reviews of your lemonade at the end of the game
+            DisplayCustomerCompliments();
+            DisplayCustomerComplaints();
         }
-        public void DisplayRoundScore()
+        void DisplayCustomerCompliments()
         {
-            // Displays how well you did based on amount of cups sold.
+            Console.WriteLine(Environment.NewLine + "Here are some compliments you have recieved: " + Environment.NewLine + +player.reviewBook.complimentsAboutObject1 + " compliment(s) about the amount of " + player.inventory.item1name + " you used." + Environment.NewLine + + player.reviewBook.complimentsAboutObject2 + " compliment(s) about the amount of " + player.inventory.item2name + " you used." + Environment.NewLine + +player.reviewBook.complimentsAboutObject3 + " compliment(s) about the amount of " + player.inventory.item3name + " you used." + Environment.NewLine + "" + player.reviewBook.complimentsAboutObject4 + " compliment(s) about the amount of " + player.inventory.item4name + " you used." +Environment.NewLine + "" +player.reviewBook.complimentsAboutPrice + " compliment(s) about the price.");
         }
-        public void DisplayCustomerAmount()
+        void DisplayCustomerComplaints()
         {
-            //Displays how many customers there were
+            Console.WriteLine(Environment.NewLine + "Here are some complaints you have recieved: " + Environment.NewLine + +player.reviewBook.complaintsAboutFlavor+ " complaint(s) about flavor." + Environment.NewLine + +player.reviewBook.complaintsAboutObject1 + " complaint(s) about the amount of "+player.inventory.item1name+"." + Environment.NewLine +""  +player.reviewBook.complaintsAboutObject2 + " complaint(s) about the amount of "+player.inventory.item2name + "."+ Environment.NewLine + +player.reviewBook.complaintsAboutObject1 + " complaint(s) about the amount of " + player.inventory.item1name + "." + Environment.NewLine + +player.reviewBook.complaintsAboutObject3 + " complaint(s) about the amount of " + player.inventory.item3name + "" + Environment.NewLine + +player.reviewBook.complaintsAboutObject4 + " complaint(s) about the amount of " + player.inventory.item4name + "." + Environment.NewLine + +player.reviewBook.complaintsAboutPrice+ " complaint(s) about the price" + Environment.NewLine + +player.reviewBook.complaintsAboutNoDrinks + " complaint(s) about you being out of stock." + Environment.NewLine + +player.reviewBook.complaintsAboutWeather + " complaint(s) about the weather." );
         }
         public void DisplayAfterGameOptions()
         {
-            //Display options aftergame
-        }
-        public void DisplayItemLost()
-        {
-            //Displays that you lost items.
-        }
-        public void DisplayItemGained()
-        {
-            //Displays tha you gained items.
-        }
-        public void DisplayDaysLeft()
-        {
-            // Displays how many days are left in the game
-        }
-        public void DisplayTips()
-        {
-            //Displays if anyoen tipped
-        }
-        public void DisplayCustomerSatisfaction()
-        {
-            //Displays how many customers were satisfied
-        }
-        public void DisplaysReputation()
-        {
-            //Displays the amount of people that could be buying compared to how many did
+            Console.WriteLine(Environment.NewLine + "Would you like to save your game? Will Fix");
         }
         public void DisplayEndDateOption()
         {

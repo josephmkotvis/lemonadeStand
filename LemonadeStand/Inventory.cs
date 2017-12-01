@@ -24,7 +24,12 @@ namespace LemonadeStand
         public double item2DeductedAmount;
         public double item3DeductedAmount;
         public double item4DeductedAmount;
-        public double MerchandiseSold = 0;
+        public double merchandiseSold = 0;
+        public double item1Sold =0;
+        public double item2Sold =0;
+        public double item3Sold =0;
+        public double item4Sold =0;
+        public bool outOfSupplies;
         Store store;
 
         public Inventory( Cup item1, Lemon item2, Sugar item3, Ice item4, Store store)
@@ -49,21 +54,21 @@ namespace LemonadeStand
                 item4name
             };
         }
-        public void DeductItem1InventoryAmount()
+        public void DeductItem1RecipeAmount()
         {
             item1Amount -= item1DeductedAmount;
         }
-        public void DeductItem2InventoryAmount()
+        public void DeductItem2RecipeAmount()
         {
-            item1Amount -= item2DeductedAmount;
+            item2Amount -= item2DeductedAmount;
         }
-        public void DeductItem3InventoryAmount()
+        public void DeductItem3RecipeAmount()
         {
-            item1Amount -= item3DeductedAmount;
+            item3Amount -= item3DeductedAmount;
         }
-        public void DeductItem4InventoryAmount()
+        public void DeductItem4RecipeAmount()
         {
-            item1Amount -= item4DeductedAmount;
+            item4Amount -= item4DeductedAmount;
         }
         public void DeductItem1InventorySingle()
         {

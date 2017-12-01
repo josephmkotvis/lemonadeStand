@@ -8,26 +8,23 @@ namespace LemonadeStand
 {
     class BussinessPerson : Customer
     {
-        string dislikedWeatherType = "Sunny";
-        double dislikedAirTemperature = 65;
-        double dislikedWindSpeed = 10;
-        double dislikedPrecipitation = 3;
-        double favoriteObject1Amount = 1;
-        double favoriteObject2Amount = 9;
-        double favoriteObject3Amount = 6;
-        double favoriteObject4Amount = 3;
-        double dislikedObject1Amount = 0;
-        double dislikedObject2Amount = 12;
-        double dislikedObject3Amount = 14;
-        double dislikedObject4Amount = 2;
-        double maxPay = 26;
-        public new bool decisionToBuy;
-        public new bool decisionToGo;
-        public BussinessPerson(Player player, Weather weather)
-            : base(player, weather)
+        public BussinessPerson(Player player, Weather weather, string name, string dislikedWeatherType, double dislikedAirTemperature, double dislikedWindSpeed, double dislikedPrecipitation, double favoriteObject1Amount, double favoriteObject2Amount, double favoriteObject3Amount, double favoriteObject4Amount, double dislikedObject1Amount, double dislikedObject2Amount, double dislikedObject3Amount, double dislikedObject4Amount, double maxPay)
+            : base(player, weather, name, dislikedWeatherType, dislikedAirTemperature, dislikedWindSpeed, dislikedPrecipitation, favoriteObject1Amount, favoriteObject2Amount, favoriteObject3Amount, favoriteObject4Amount, dislikedObject1Amount, dislikedObject2Amount, dislikedObject3Amount, dislikedObject4Amount, maxPay)
         {
-
+            this.name = name;
+            this.dislikedWeatherType = dislikedWeatherType;
+            this.dislikedAirTemperature = dislikedAirTemperature;
+            this.dislikedWindSpeed = dislikedWindSpeed;
+            this.dislikedPrecipitation = dislikedPrecipitation;
+            this.favoriteObject1Amount = favoriteObject1Amount;
+            this.favoriteObject2Amount = favoriteObject2Amount;
+            this.favoriteObject3Amount = favoriteObject3Amount;
+            this.favoriteObject4Amount = favoriteObject4Amount;
+            this.dislikedObject1Amount = dislikedObject1Amount;
+            this.dislikedObject2Amount = dislikedObject2Amount;
+            this.dislikedObject3Amount = dislikedObject3Amount;
+            this.dislikedObject4Amount = dislikedObject4Amount;
+            this.maxPay = maxPay;
         }
-
     }
 }

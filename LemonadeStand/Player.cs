@@ -16,8 +16,7 @@ namespace LemonadeStand
         public RecipeBook recipeBook;
         public bool desireToContinue;
         public ReviewBook reviewBook;
-        public AttendanceList attendanceList;
-        
+        public AttendanceList attendanceList;        
         // make wallet class
         //wallet says I dont have enough money
         // have store say it wont take it without money
@@ -41,13 +40,21 @@ namespace LemonadeStand
             input = Console.ReadLine();
             return input;
         }
+
+        void CheckSupplies()
+        {
+            if ((inventory.item1Amount == 0) || (inventory.item2Amount == 0) || (inventory.item3Amount == 0) || (inventory.item4Amount == 0))
+            {
+                inventory.outOfSupplies = true;
+            }
+              
+        }
+
         public void ChangeItem1Recipe()
         {
             if (recipeBook.playerRecipeChangeNumber > 0)
             {
                 recipeBook.AddToItem1RecipeAmount();
-                inventory.item1DeductedAmount = recipeBook.playerRecipeChangeNumber;
-                inventory.DeductItem1InventoryAmount();
             }
         }
         public void ChangeItem2Recipe()
@@ -55,8 +62,6 @@ namespace LemonadeStand
             if (recipeBook.playerRecipeChangeNumber > 0)
             {
                 recipeBook.AddToItem2RecipeAmount();
-                inventory.item1DeductedAmount = recipeBook.playerRecipeChangeNumber;
-                inventory.DeductItem2InventoryAmount();
             }
         }
         public void ChangeItem3Recipe()
@@ -64,8 +69,6 @@ namespace LemonadeStand
             if (recipeBook.playerRecipeChangeNumber > 0)
             {
                 recipeBook.AddToItem3RecipeAmount();
-                inventory.item1DeductedAmount = recipeBook.playerRecipeChangeNumber;
-                inventory.DeductItem3InventoryAmount();
             }
         }
         public void ChangeItem4Recipe()
@@ -73,10 +76,45 @@ namespace LemonadeStand
             if (recipeBook.playerRecipeChangeNumber > 0)
             {
                 recipeBook.AddToItem4RecipeAmount();
-                inventory.item1DeductedAmount = recipeBook.playerRecipeChangeNumber;
-                inventory.DeductItem4InventoryAmount();
             }
         }
+        public void SellProduct()
+        {
+            inventory.merchandiseSold++;
+            piggyBank.totalGainedMoney += recipeBook.cost;
+            piggyBank.gainedMoney += recipeBook.cost;
+            piggyBank.money += recipeBook.cost;
+            SellItem1();
+            SellItem2();
+            SellItem3();
+            SellItem4();
+            
+        }
+        public void SellItem1()
+        {
+            inventory.item1Sold++;
+            recipeBook.item1RecipeAmount = inventory.item1DeductedAmount;
+            inventory.DeductItem1RecipeAmount();
+        }
+        public void SellItem2()
+        {
+            inventory.item2Sold++;
+            recipeBook.item2RecipeAmount = inventory.item2DeductedAmount;
+            inventory.DeductItem2RecipeAmount();
+        }
+        public void SellItem3()
+        {
+            inventory.item3Sold++;
+            recipeBook.item3RecipeAmount = inventory.item3DeductedAmount;
+            inventory.DeductItem3RecipeAmount();
+        }
+        public void SellItem4()
+        {
+            inventory.item4Sold++;
+            recipeBook.item4RecipeAmount = inventory.item4DeductedAmount;
+            inventory.DeductItem4RecipeAmount();
+        }
+
         public void BuyItem1()
         {
            inventory.UpdateItem1InventorySingle();
