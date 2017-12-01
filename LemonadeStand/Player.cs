@@ -22,11 +22,11 @@ namespace LemonadeStand
         {
             this.name = name;
             this.store = store;
-            this.piggyBank = new PiggyBank(store);
-            this.inventory = new Inventory(item1, item2, item3, item4);
             this.recipeBook = new RecipeBook();
             this.reviewBook = new ReviewBook();
+            this.piggyBank = new PiggyBank();
             this.attendanceList = new AttendanceList();
+            this.inventory = new Inventory(item1, item2, item3, item4);
         }
         public string SetPlayerInput()
         {
@@ -131,82 +131,82 @@ namespace LemonadeStand
         public void BuyItem1()
         {
            UpdateItem1InventorySingle();
-           piggyBank.DeductMoneyForItem1();
+           DeductMoneyForItem1();
         }
         public void BuyItem2()
         {
             UpdateItem2InventorySingle();
-            piggyBank.DeductMoneyForItem2();
+            DeductMoneyForItem2();
         }
         public void BuyItem3()
         {
             UpdateItem3InventorySingle();
-            piggyBank.DeductMoneyForItem3();
+            DeductMoneyForItem3();
         }
         public void BuyItem4()
         {
             UpdateItem4InventorySingle();
-            piggyBank.DeductMoneyForItem4();
+            DeductMoneyForItem4();
         }
         public void BuyItem1Bundle1()
         {
             UpdateItem1FromBundle1();
-            piggyBank.DeductMoneyForItem1Bundle1();
+            DeductMoneyForItem1Bundle1();
         }
         public void BuyItem1Bundle2()
         {
             UpdateItem1FromBundle2();
-            piggyBank.DeductMoneyForItem1Bundle2();
+            DeductMoneyForItem1Bundle2();
         }
         public void BuyItem1Bundle3()
         {
             UpdateItem1FromBundle3();
-            piggyBank.DeductMoneyForItem1Bundle3();
+            DeductMoneyForItem1Bundle3();
         }
         public void BuyItem2Bundle1()
         {
             UpdateItem2FromBundle1();
-            piggyBank.DeductMoneyForItem2Bundle1();
+            DeductMoneyForItem2Bundle1();
         }
         public void BuyItem2Bundle2()
         {
             UpdateItem2FromBundle2();
-            piggyBank.DeductMoneyForItem2Bundle2();
+            DeductMoneyForItem2Bundle2();
         }
         public void BuyItem2Bundle3()
         {
             UpdateItem2FromBundle3();
-            piggyBank.DeductMoneyForItem2Bundle3();
+            DeductMoneyForItem2Bundle3();
         }
         public void BuyItem3Bundle1()
         {
             UpdateItem3FromBundle1();
-            piggyBank.DeductMoneyForItem3Bundle1();
+            DeductMoneyForItem3Bundle1();
         }
         public void BuyItem3Bundle2()
         {
             UpdateItem3FromBundle2();
-            piggyBank.DeductMoneyForItem3Bundle2();
+            DeductMoneyForItem3Bundle2();
         }
         public void BuyItem3Bundle3()
         {
             UpdateItem3FromBundle3();
-            piggyBank.DeductMoneyForItem3Bundle3();
+            DeductMoneyForItem3Bundle3();
         }
         public void BuyItem4Bundle1()
         {
             UpdateItem4FromBundle1();
-            piggyBank.DeductMoneyForItem4Bundle1();
+            DeductMoneyForItem4Bundle1();
         }
         public void BuyItem4Bundle2()
         {
             UpdateItem4FromBundle2();
-            piggyBank.DeductMoneyForItem4Bundle2();
+            DeductMoneyForItem4Bundle2();
         }
         public void BuyItem4Bundle3()
         {
             UpdateItem4FromBundle3();
-            piggyBank.DeductMoneyForItem4Bundle3();
+            DeductMoneyForItem4Bundle3();
         }
         public void DeductItem1RecipeAmount()
         {
@@ -303,6 +303,70 @@ namespace LemonadeStand
         public void UpdateItem4FromBundle3()
         {
             inventory.item4Amount += store.bundle3Amount;
+        }
+        public void DeductMoneyForItem1()
+        {
+            piggyBank.money -= store.item1Cost;
+        }
+        public void DeductMoneyForItem2()
+        {
+            piggyBank.money -= store.item2Cost;
+        }
+        public void DeductMoneyForItem3()
+        {
+            piggyBank.money -= store.item3Cost;
+        }
+        public void DeductMoneyForItem4()
+        {
+            piggyBank.money -= store.item4Cost;
+        }
+        public void DeductMoneyForItem1Bundle1()
+        {
+            piggyBank.money -= store.item1Bundle1Cost;
+        }
+        public void DeductMoneyForItem1Bundle2()
+        {
+            piggyBank.money -= store.item1Bundle2Cost;
+        }
+        public void DeductMoneyForItem1Bundle3()
+        {
+            piggyBank.money -= store.item1Bundle3Cost;
+        }
+        public void DeductMoneyForItem2Bundle1()
+        {
+            piggyBank.money -= store.item2Bundle1Cost;
+        }
+        public void DeductMoneyForItem2Bundle2()
+        {
+            piggyBank.money -= store.item2Bundle2Cost;
+        }
+        public void DeductMoneyForItem2Bundle3()
+        {
+            piggyBank.money -= store.item2Bundle3Cost;
+        }
+        public void DeductMoneyForItem3Bundle1()
+        {
+            piggyBank.money -= store.item3Bundle1Cost;
+        }
+        public void DeductMoneyForItem3Bundle2()
+        {
+            piggyBank.money -= store.item3Bundle2Cost;
+        }
+        public void DeductMoneyForItem3Bundle3()
+        {
+            piggyBank.money -= store.item3Bundle3Cost;
+        }
+        public void DeductMoneyForItem4Bundle1()
+        {
+            piggyBank.money -= store.item4Bundle1Cost;
+        }
+        public void DeductMoneyForItem4Bundle2()
+        {
+            piggyBank.money -= store.item4Bundle1Cost;
+        }
+        public void DeductMoneyForItem4Bundle3()
+        {
+            piggyBank.money -= store.item4Bundle3Cost;
         }
     }
 }
