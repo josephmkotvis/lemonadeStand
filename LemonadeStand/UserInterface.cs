@@ -200,7 +200,7 @@ namespace LemonadeStand
         }
         public void DisplayAfterGameOptions()
         {
-            Console.WriteLine(Environment.NewLine + "Would you like to save your game? Will Fix");
+            Console.WriteLine(Environment.NewLine + "Would you like to save your game?" +Environment.NewLine + "1) No" + Environment.NewLine + "2) No" );
         }
         public void DisplayEndDateOption()
         {

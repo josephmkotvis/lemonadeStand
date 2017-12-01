@@ -33,50 +33,6 @@ namespace LemonadeStand
             input = Console.ReadLine();
             return input;
         }
-        public void ChangeItem1Recipe()
-        {
-            if (recipeBook.playerRecipeChangeNumber > 0)
-            {
-                AddToItem1RecipeAmount();
-            }
-        }
-        public void ChangeItem2Recipe()
-        {
-            if (recipeBook.playerRecipeChangeNumber > 0)
-            {
-                AddToItem2RecipeAmount();
-            }
-        }
-        public void ChangeItem3Recipe()
-        {
-            if (recipeBook.playerRecipeChangeNumber > 0)
-            {
-                AddToItem3RecipeAmount();
-            }
-        }
-        public void ChangeItem4Recipe()
-        {
-            if (recipeBook.playerRecipeChangeNumber > 0)
-            {
-                AddToItem4RecipeAmount();
-            }
-        }
-        public void AddToItem1RecipeAmount()
-        {
-            recipeBook.item1RecipeAmount += recipeBook.playerRecipeChangeNumber;
-        }
-        public void AddToItem2RecipeAmount()
-        {
-            recipeBook.item2RecipeAmount += recipeBook.playerRecipeChangeNumber;
-        }
-        public void AddToItem3RecipeAmount()
-        {
-            recipeBook.item3RecipeAmount += recipeBook.playerRecipeChangeNumber;
-        }
-        public void AddToItem4RecipeAmount()
-        {
-            recipeBook.item4RecipeAmount += recipeBook.playerRecipeChangeNumber;
-        }
         public void CheckForStock()
         {
             if ((recipeBook.item1RecipeAmount > inventory.item1Amount) || (recipeBook.item2RecipeAmount > inventory.item2Amount) || (recipeBook.item3RecipeAmount > inventory.item3Amount) || (recipeBook.item4RecipeAmount > inventory.item4Amount))
@@ -367,6 +323,50 @@ namespace LemonadeStand
         public void DeductMoneyForItem4Bundle3()
         {
             piggyBank.money -= store.item4Bundle3Cost;
+        }
+        public void ChangeItem1Recipe()
+        {
+            if (recipeBook.playerRecipeChangeNumber > 0)
+            {
+                AddToItem1RecipeAmount();
+            }
+        }
+        public void ChangeItem2Recipe()
+        {
+            if (recipeBook.playerRecipeChangeNumber > 0)
+            {
+                AddToItem2RecipeAmount();
+            }
+        }
+        public void ChangeItem3Recipe()
+        {
+            if (recipeBook.playerRecipeChangeNumber > 0)
+            {
+                AddToItem3RecipeAmount();
+            }
+        }
+        public void ChangeItem4Recipe()
+        {
+            if (recipeBook.playerRecipeChangeNumber > 0)
+            {
+                AddToItem4RecipeAmount();
+            }
+        }
+        public void AddToItem1RecipeAmount()
+        {
+            recipeBook.item1RecipeAmount += recipeBook.playerRecipeChangeNumber;
+        }
+        public void AddToItem2RecipeAmount()
+        {
+            recipeBook.item2RecipeAmount += recipeBook.playerRecipeChangeNumber;
+        }
+        public void AddToItem3RecipeAmount()
+        {
+            recipeBook.item3RecipeAmount += recipeBook.playerRecipeChangeNumber;
+        }
+        public void AddToItem4RecipeAmount()
+        {
+            recipeBook.item4RecipeAmount += recipeBook.playerRecipeChangeNumber;
         }
     }
 }

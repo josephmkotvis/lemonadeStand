@@ -77,7 +77,6 @@ namespace LemonadeStand
             RunSellingPart();
             RunPostSellingPart();
             ResetStats();
-
         }
         void RunPreSellingPart()
         {
@@ -1033,10 +1032,6 @@ namespace LemonadeStand
         void UpdatCurrentDay()
         {
             day1.currentDay++;
-        }
-        void SaveGame()
-        {
-            //save game with sql
         }
     }
 }
