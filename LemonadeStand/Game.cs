@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 namespace LemonadeStand
 {
     class Game
-    {  // member 
+    { 
         Random rnd = new Random();
-        public Player player;
-        public UserInterface UI;
-        public Store store;
-        public Day day1;
-        public Day day2;
-        public Day day3;
-        public Day day4;
-        public Day day5;
-        public Day day6;
-        public Day day7;
+        Player player;
+        UserInterface UI;
+        Store store;
+        Day day1;
+        Day day2;
+        Day day3;
+        Day day4;
+        Day day5;
+        Day day6;
+        Day day7;
         BussinessPerson customer1;
         Banker customer2;
         Millionare customer3;
@@ -26,12 +26,11 @@ namespace LemonadeStand
         Teacher customer5;
         Athlete customer6;
         ConstructionWorker customer7;
-        public Weather weather;
-        public Customer customer;
-        private double startingCustomers = 30;
-        private double amountOfVisitors;
-        private bool endCondition = false;
-        //constructor
+        Weather weather;
+        Customer customer;
+        double startingCustomers = 30;
+        double amountOfVisitors;
+        bool endCondition = false;
         public Game()
         {
             Cup item1 = new Cup();
@@ -51,16 +50,13 @@ namespace LemonadeStand
             this.customer = new Customer(player, weather, "Customer", "None", 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0);
             this.customer1 = new BussinessPerson(player, weather, "BussinessPerson", "Sunny", 65, 10, 10, 3, 1, 9, 6, 3, 0, 12, 14, 26);
             this.customer2 = new Banker(player, weather, "Banker", "Rain", 80, 30, 10, 1, 2, 5, 1, 0, 8, 10, 4, 16);
-            this.customer3 = new Millionare(player, weather, "Millionare", "None", 100, 30, 12, 500, 500, 500 ,500, 0, 0, 0, 0, 0);
+            this.customer3 = new Millionare(player, weather, "Millionare", "None", 100, 30, 12, 500, 500, 500 ,500, 0, 0, 0, 0, 500);
             this.customer4 = new Student(player, weather, "Student", "Hail", 34, 12, 5, 1, 15, 20, 3, 0, 8, 13, 12, 1);
             this.customer5 = new Teacher(player, weather, "Teacher", "Foggy", 45, 12, 14, 1, 6, 4, 3, 0, 1, 1, 1, 10);
             this.customer6 = new Athlete(player, weather, "Athlete", "Snow", 10, 18, 2, 1, 4, 0, 25, 0, 2, 3, 0, 10);
             this.customer7 = new ConstructionWorker(player, weather, "Construction Worker", "Windy", 90, 35, 0, 1, 13, 10, 14, 0, 4, 8, 0, 7);
             this.UI = new UserInterface(player, store, day1, day2, day3, day4, day5, day6, day7, customer1, customer2, customer3, customer4, customer5, customer6, customer7);
         }
-
-
-        //methods
 
         public void RunGame()
         {
@@ -83,10 +79,30 @@ namespace LemonadeStand
             ResetStats();
 
         }
+        void RunPreSellingPart()
+        {
+            SavePreRoundMoney();
+            TransferDayWeathers();
+            UI.ClearConsoleLog();
+            AskToChooseBuyingOptions();
+            PromptToChooseRecipe();
+            AskToChooseProductPrice();
+            SetAmountOfVisitors();
+        }
+        void RunSellingPart()
+        {
+            for (int i = 0; i < amountOfVisitors; i++)
+            {
+                ChooseRandomBuyer();
+            }
+            UI.ClearConsoleLog();
+        }
         void RunPostSellingPart()
         {
-            UI.DisplayMoneyChanges();
-            UI.DisplayCustomerReviews();
+            UI.DisplaySalesResults();
+            UI.DisplayPlayerRecipe();
+            UI.DisplayRoundResults();
+            player.SetPlayerInput();
             ResetMoneyGainedThisRound();
             TransferDayWeathers();
             UpdatCurrentDay();
@@ -139,16 +155,6 @@ namespace LemonadeStand
             player.reviewBook.complaintsAboutNoDrinks = 0;
             player.reviewBook.complaintsAboutWeather = 0;
         }
-        void RunSellingPart()
-        {
-            for (int i = 0; i < amountOfVisitors; i++)
-            {
-                    ChooseRandomBuyer();
-            }
-            UI.ClearConsoleLog();
-            UI.DisplaySalesResults();
-            player.SetPlayerInput();
-        }
         void SavePreRoundMoney()
         {
             player.piggyBank.preGameMoney=player.piggyBank.money;
@@ -188,16 +194,6 @@ namespace LemonadeStand
         void SetAmountOfVisitors()
         {
             amountOfVisitors = startingCustomers + ((player.attendanceList.percentageOfCustomersAttended + 1) * startingCustomers);
-        }
-        void RunPreSellingPart()
-        {
-            SavePreRoundMoney();
-            TransferDayWeathers();
-            UI.ClearConsoleLog();
-            AskToChooseBuyingOptions();
-            PromptToChooseRecipe();
-            AskToChooseProductPrice();
-            SetAmountOfVisitors();
         }
         void SetStartingWeather()
         {
@@ -498,6 +494,7 @@ namespace LemonadeStand
                 player.SetPlayerInput();
                 SetPlayerRecipeChangeNumber();
                 CheckItem2ForRecipe();
+
         }
         void AskToChangeItem3Recipe()
         {
@@ -1028,7 +1025,7 @@ namespace LemonadeStand
         }
         void CheckEndingConditon()
         {
-            if (day1.currentDay == player.chosenEndDate)
+            if (day1.currentDay == (player.chosenEndDate+1))
             {
                 endCondition = true;
             }

@@ -8,8 +8,6 @@ namespace LemonadeStand
 {
     class UserInterface
     {
-        // member variables
-        public string userInput;
         Player player;
         Store store;
         Day day1;
@@ -26,10 +24,6 @@ namespace LemonadeStand
         Customer customer5;
         Customer customer6;
         Customer customer7;
-
-        // make UI into a static
-
-        // constructor
         public UserInterface(Player player,Store store,Day day1, Day day2, Day day3, Day day4, Day day5, Day day6, Day day7, Customer customer1, Customer customer2, Customer customer3, Customer customer4, Customer customer5, Customer customer6, Customer customer7)
         {
             this.player = player;
@@ -48,9 +42,7 @@ namespace LemonadeStand
             this.customer5 = customer5;
             this.customer6 = customer6;
             this.customer7 = customer7;
-
         }
-        //methods
         public  void ClearConsoleLog()
         {
             Console.Clear();
@@ -78,14 +70,9 @@ namespace LemonadeStand
         {
             Console.WriteLine(Environment.NewLine + "What is " + player.name + "'s name?");
         }
-        public string GetUserInput()
-        {
-            userInput = Console.ReadLine();
-            return userInput;
-        }
         public void DisplayFaq()
         {
-            Console.WriteLine(Environment.NewLine + "This is how to play blah blah");
+            Console.WriteLine(Environment.NewLine + " Thanks for playing!" + Environment.NewLine + " You will begin the game with a set amount of money and no items." + Environment.NewLine + " Buy items from the store so you can start making a recipe." + Environment.NewLine + " Then use your recipe for a product." + Environment.NewLine + " After that you will try to sell it to the general public." + Environment.NewLine + " The computer will automatically generate the players and how many of your product was sold." + Environment.NewLine + " Afterwards, you will learn what was liked and disliked about your product." + Environment.NewLine + " After that, you can use what you have gained from that day to try better the next." + Environment.NewLine +  " This game is also best viewed full screen!");
         }
         public void DisplayPlayer1Inventory()
         {
@@ -109,7 +96,7 @@ namespace LemonadeStand
         }
         public void DisplayItemBundles()
         {
-            Console.WriteLine(Environment.NewLine + "The bundles come in sets of " + Environment.NewLine + + store.bundle1Amount +" for " + (100 * store.bundle1Discount) + "% off, " + Environment.NewLine + + store.bundle2Amount + " for " + (100 * store.bundle2Discount) + "% off, " + Environment.NewLine + +store.bundle3Amount + " for " + (100 * store.bundle3Discount) + "% off." + Environment.NewLine + "Choose the number accordingly to which item you would want to see specific prices for:" + Environment.NewLine +"1)" + store.item1Name + ","+ Environment.NewLine + "2)" + store.item2Name + "," + Environment.NewLine + "3)" + store.item3Name + "," + Environment.NewLine + "4)" + store.item4Name + "," + Environment.NewLine + "5)To return to buying the items individually," + Environment.NewLine + "6)To continue.");
+            Console.WriteLine(Environment.NewLine + "The bundles come in sets of " + Environment.NewLine + + store.bundle1Amount +" for " + (10 * store.bundle1Discount) + "% off, " + Environment.NewLine + + store.bundle2Amount + " for " + (10 * store.bundle2Discount) + "% off, " + Environment.NewLine + +store.bundle3Amount + " for " + (10 * store.bundle3Discount) + "% off." + Environment.NewLine + "Choose the number accordingly to which item you would want to see specific prices for:" + Environment.NewLine +"1)" + store.item1Name + ","+ Environment.NewLine + "2)" + store.item2Name + "," + Environment.NewLine + "3)" + store.item3Name + "," + Environment.NewLine + "4)" + store.item4Name + "," + Environment.NewLine + "5)To return to buying the items individually," + Environment.NewLine + "6)To continue.");
         }
         public void DisplayItem1Bundles()
         {
@@ -182,8 +169,9 @@ namespace LemonadeStand
         }
         public void DisplayRoundResults()
         {
-
-            // Display the results of the round
+            DisplaySalesResults();
+            DisplayInventoryChanges();
+            DisplayCustomerReviews();
         }
         public void DisplaySalesResults()
         {
@@ -208,7 +196,7 @@ namespace LemonadeStand
         }
         void DisplayCustomerComplaints()
         {
-            Console.WriteLine(Environment.NewLine + "Here are some complaints you have recieved: " + Environment.NewLine + +player.reviewBook.complaintsAboutFlavor+ " complaint(s) about flavor." + Environment.NewLine + +player.reviewBook.complaintsAboutObject1 + " complaint(s) about the amount of "+player.inventory.item1name+"." + Environment.NewLine +""  +player.reviewBook.complaintsAboutObject2 + " complaint(s) about the amount of "+player.inventory.item2name + "."+ Environment.NewLine + +player.reviewBook.complaintsAboutObject1 + " complaint(s) about the amount of " + player.inventory.item1name + "." + Environment.NewLine + +player.reviewBook.complaintsAboutObject3 + " complaint(s) about the amount of " + player.inventory.item3name + "" + Environment.NewLine + +player.reviewBook.complaintsAboutObject4 + " complaint(s) about the amount of " + player.inventory.item4name + "." + Environment.NewLine + +player.reviewBook.complaintsAboutPrice+ " complaint(s) about the price" + Environment.NewLine + +player.reviewBook.complaintsAboutNoDrinks + " complaint(s) about you being out of stock." + Environment.NewLine + +player.reviewBook.complaintsAboutWeather + " complaint(s) about the weather." );
+            Console.WriteLine(Environment.NewLine + "Here are some complaints you have recieved: " + Environment.NewLine + +player.reviewBook.complaintsAboutFlavor+ " complaint(s) about flavor." + Environment.NewLine + +player.reviewBook.complaintsAboutObject1 + " complaint(s) about the amount of "+player.inventory.item1name+"." + Environment.NewLine +""  +player.reviewBook.complaintsAboutObject2 + " complaint(s) about the amount of "+player.inventory.item2name + "."+ Environment.NewLine + +player.reviewBook.complaintsAboutObject3 + " complaint(s) about the amount of " + player.inventory.item3name + "." + Environment.NewLine + +player.reviewBook.complaintsAboutObject4 + " complaint(s) about the amount of " + player.inventory.item4name + "." + Environment.NewLine + +player.reviewBook.complaintsAboutPrice+ " complaint(s) about the price" + Environment.NewLine + +player.reviewBook.complaintsAboutNoDrinks + " complaint(s) about you being out of stock." + Environment.NewLine + +player.reviewBook.complaintsAboutWeather + " complaint(s) about the weather." );
         }
         public void DisplayAfterGameOptions()
         {

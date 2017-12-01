@@ -24,7 +24,7 @@ namespace LemonadeStand
         public double bundle2Amount = 25;
         public double bundle3Amount = 50;
         public double bundle1Discount = 0.9;
-        public double bundle2Discount = 0.8;
+        public double bundle2Discount = .8;
         public double bundle3Discount = 0.7;
         public object item1;
         public object item2;
@@ -66,7 +66,6 @@ namespace LemonadeStand
             item4Bundle2Cost = ((item4.cost * bundle2Amount) * bundle2Discount);
             item4Bundle3Cost = ((item4.cost * bundle3Amount) * bundle3Discount);
         }
-
         void GetStoreInventoryWithPrice()
         {
             List<Object> inventoryItems = new List<Object>

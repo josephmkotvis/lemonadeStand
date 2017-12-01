@@ -18,7 +18,6 @@ namespace LemonadeStand
         {
             this.store = store;
         }
-
         public void DeductMoneyForItem1()
         {
             money -= store.item1Cost;

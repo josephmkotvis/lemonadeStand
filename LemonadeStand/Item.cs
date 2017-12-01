@@ -8,11 +8,7 @@ namespace LemonadeStand
 {
     class Item
     {
-        // member variables
         public string name;
         public double cost;
-        // will be a string of objects
-        //constructor
-        //methods
     }
 }

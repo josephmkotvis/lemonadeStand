@@ -8,7 +8,7 @@ namespace LemonadeStand
 {
     class Customer
     {
-        public string name;
+        protected string name;
         protected string dislikedWeatherType;
         protected double dislikedAirTemperature;
         protected double dislikedWindSpeed;
@@ -22,11 +22,10 @@ namespace LemonadeStand
         protected double dislikedObject3Amount;
         protected double dislikedObject4Amount;
         protected  double maxPay;
-        protected bool decisionToBuy;
-        protected bool decisionToGo;
+        protected bool decisionToBuy = false;
+        protected bool decisionToGo = false;
         protected Player player;
         protected Weather weather;
-
         public Customer(Player player, Weather weather, string name, string dislikedWeatherType, double dislikedAirTemperature, double dislikedWindSpeed, double dislikedPrecipitation, double favoriteObject1Amount, double favoriteObject2Amount, double favoriteObject3Amount, double favoriteObject4Amount, double dislikedObject1Amount, double dislikedObject2Amount, double dislikedObject3Amount, double dislikedObject4Amount, double maxPay)
         {
             this.player = player;
@@ -46,7 +45,6 @@ namespace LemonadeStand
             this.dislikedObject4Amount = dislikedObject4Amount;
             this.maxPay = maxPay;
         }
-       
         public void DecideToGo()
         {
             ThinkABoutWeatherType();
@@ -54,6 +52,8 @@ namespace LemonadeStand
             ThinkAboutWindSpeed();
             ThinkAboutPrecipitation();
             CheckIfDecidedToGo();
+            ThinkAboutPrice();
+            DecideIfBuying();
         }
         void CheckIfDecidedToGo()
         {
@@ -64,13 +64,7 @@ namespace LemonadeStand
             else
             {
                 player.attendanceList.amountOfAllCustomersToAttend++;
-                DecideAboutBuying();
             }
-        }
-        void DecideAboutBuying()
-        {
-            ThinkAboutPrice();
-            DecideIfBuying();
         }
         void ThinkAboutPrice()
         {
@@ -87,28 +81,24 @@ namespace LemonadeStand
         {
             if (decisionToBuy == true)
             {
-                AttemptToBuy();
+                BuyProduct();
             }
             else if (decisionToBuy == false)
             {
                 DecideNotToBuy();
             }
         }
-        void AttemptToBuy()
+        void BuyProduct()
         {
-            if ((player.inventory.item1Amount <= player.recipeBook.item1RecipeAmount) || (player.inventory.item2Amount <= player.recipeBook.item2RecipeAmount) || (player.inventory.item3Amount <= player.recipeBook.item3RecipeAmount) || (player.inventory.item4Amount <= player.recipeBook.item4RecipeAmount))
+            player.SellToCustomer();
+            if (player.inventory.outOfSupplies == false)
             {
-                ComplainAboutNoProducts();
+                DecideOnTaste();
             }
             else
             {
-                BuyProduct();
+                player.reviewBook.complaintsAboutNoDrinks++;
             }
-        }
-        void BuyProduct()
-        {
-            DecideOnTaste();
-            player.SellProduct();
         }
         void ComplainAboutNoProducts()
         {
@@ -121,7 +111,7 @@ namespace LemonadeStand
         }
         void DecideNotToBuy()
         {
-            player.attendanceList.amountOfCustomersToNotAttend++;
+            player.attendanceList.amountOfAllCustomersToAttend--;
         }
         void ThinkABoutWeatherType()
         {
@@ -166,7 +156,6 @@ namespace LemonadeStand
             {
                 ComplainAboutWeather();
             }
-
         }
         void DecideOnTaste()
         {
@@ -175,7 +164,6 @@ namespace LemonadeStand
             TasteObject3InProduct();
             TasteObject4InProduct();
         }
-
         void TasteObject1InProduct()
         {
             if (dislikedObject1Amount == player.recipeBook.item1RecipeAmount)
@@ -239,22 +227,18 @@ namespace LemonadeStand
         void ComplimentAboutItem1()
         {
             player.reviewBook.complimentsAboutObject1++;
-
         }
         void ComplimentAboutItem2()
         {
             player.reviewBook.complimentsAboutObject2++;
-
         }
         void ComplimentAboutItem3()
         {
             player.reviewBook.complimentsAboutObject3++;
-
         }
         void ComplimentAboutItem4()
         {
             player.reviewBook.complimentsAboutObject4++;
-
         }
     }
 }

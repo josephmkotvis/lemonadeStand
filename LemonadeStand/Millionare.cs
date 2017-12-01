@@ -26,12 +26,5 @@ namespace LemonadeStand
             this.dislikedObject4Amount = dislikedObject4Amount;
             this.maxPay = maxPay;
         }
-        void TakeAllForZero()
-        {
-            player.inventory.item1Amount = 0;
-            player.inventory.item2Amount = 0;
-            player.inventory.item3Amount = 0;
-            player.inventory.item4Amount = 0;
-        }
     }
 }

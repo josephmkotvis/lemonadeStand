@@ -15,7 +15,5 @@ namespace LemonadeStand
         public double currentHumidity;
         public double currentWindSpeed;
         public double currentPrecipitation;
-        // 
-
     } 
 }
