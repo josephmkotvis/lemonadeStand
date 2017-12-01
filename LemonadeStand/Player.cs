@@ -43,34 +43,38 @@ namespace LemonadeStand
         }
         public void ChangeItem1Recipe()
         {
-            if (recipeBook.playerRecipeChangeNumber < 0)
+            if (recipeBook.playerRecipeChangeNumber > 0)
             {
                 recipeBook.AddToItem1RecipeAmount();
-                inventory.DeductItem1InventorySingle();
+                inventory.item1DeductedAmount = recipeBook.playerRecipeChangeNumber;
+                inventory.DeductItem1InventoryAmount();
             }
         }
         public void ChangeItem2Recipe()
         {
-            if (recipeBook.playerRecipeChangeNumber < 0)
+            if (recipeBook.playerRecipeChangeNumber > 0)
             {
                 recipeBook.AddToItem2RecipeAmount();
-                inventory.DeductItem2InventorySingle();
+                inventory.item1DeductedAmount = recipeBook.playerRecipeChangeNumber;
+                inventory.DeductItem2InventoryAmount();
             }
         }
         public void ChangeItem3Recipe()
         {
-            if (recipeBook.playerRecipeChangeNumber < 0)
+            if (recipeBook.playerRecipeChangeNumber > 0)
             {
                 recipeBook.AddToItem3RecipeAmount();
-                inventory.DeductItem3InventorySingle();
+                inventory.item1DeductedAmount = recipeBook.playerRecipeChangeNumber;
+                inventory.DeductItem3InventoryAmount();
             }
         }
         public void ChangeItem4Recipe()
         {
-            if (recipeBook.playerRecipeChangeNumber < 0)
+            if (recipeBook.playerRecipeChangeNumber > 0)
             {
                 recipeBook.AddToItem4RecipeAmount();
-                inventory.DeductItem4InventorySingle();
+                inventory.item1DeductedAmount = recipeBook.playerRecipeChangeNumber;
+                inventory.DeductItem4InventoryAmount();
             }
         }
         public void BuyItem1()

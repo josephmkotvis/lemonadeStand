@@ -118,7 +118,7 @@ namespace LemonadeStand
             player.reviewBook.complimentsAboutObject4++;
 
         }
-        void ThinkAboutBuying()
+        void DecideAboutBuying()
         {
             ThinkAboutPrice();
             DecideIfBuying();
@@ -136,13 +136,14 @@ namespace LemonadeStand
         }
         void BuyDrink()
         {
+            DecideOnTaste();
             player.inventory.MerchandiseSold++;
         }
         void ComplainAboutNoDrinks()
         {
             player.reviewBook.complaintsAboutNoDrinks++;
         }
-        void DecideToGo()
+         public void DecideToGo()
         {
             ThinkABoutWeatherType();
             ThinkAboutTemp();
@@ -150,7 +151,7 @@ namespace LemonadeStand
             ThinkAboutPrecipitation();
             if (decisionToGo == true)
             {
-                ThinkAboutBuying();
+                DecideAboutBuying();
             }
         }
         void DecideIfBuying()

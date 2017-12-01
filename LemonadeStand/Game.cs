@@ -19,13 +19,13 @@ namespace LemonadeStand
         public Day day5;
         public Day day6;
         public Day day7;
-        BussinessPerson customer1;
-        Banker customer2;
-        Millionare customer3;
-        Student customer4;
-        Teacher customer5;
-        Athlete customer6;
-        ConstructionWorker customer7;
+        Customer customer1;
+        Customer customer2;
+        Customer customer3;
+        Customer customer4;
+        Customer customer5;
+        Customer customer6;
+        Customer customer7;
         public Weather weather;
         public Customer customer;
         private double startingCustomers = 30;
@@ -49,13 +49,13 @@ namespace LemonadeStand
             this.player = new Player("Player1", store, item1, item2, item3, item4);
             this.weather = new Weather();
             this.customer = new Customer(player, weather);
-            this.customer1 = new BussinessPerson(player, weather);
-            this.customer2 = new Banker(player, weather);
-            this.customer3 = new Millionare(player, weather);
-            this.customer4 = new Student(player, weather);
-            this.customer5 = new Teacher(player, weather);
-            this.customer6 = new Athlete(player, weather);
-            this.customer7 = new ConstructionWorker(player, weather);
+            Customer customer1 = new BussinessPerson(player, weather);
+            Customer customer2 = new Banker(player, weather);
+            Customer customer3 = new Millionare(player, weather);
+            Customer customer4 = new Student(player, weather);
+            Customer customer5 = new Teacher(player, weather);
+            Customer customer6 = new Athlete(player, weather);
+            Customer customer7 = new ConstructionWorker(player, weather);
             this.UI = new UserInterface(player, store, day1, day2, day3, day4, day5, day6, day7);
         }
 
@@ -78,7 +78,7 @@ namespace LemonadeStand
         {
             RunPreSellingPart();
             // runs the lemonade stand days
-
+            RunSellingPart();
 
             TransferDayWeathers();
         }
@@ -86,7 +86,7 @@ namespace LemonadeStand
         {
             for (int i = 0; i < amountOfVisitors; i++)
             {
-
+                ChooseRandomBuyer();
             }
         }
         void ChooseRandomBuyer()
@@ -95,19 +95,25 @@ namespace LemonadeStand
             switch (choosenBuyer)
             {
                 case 1:
-                    
+                    customer1.DecideToGo();
                     break;
                 case 2:
+                    customer2.DecideToGo();
                     break;
                 case 3:
+                    customer3.DecideToGo();
                     break;
                 case 4:
+                    customer4.DecideToGo();
                     break;
                 case 5:
+                    customer5.DecideToGo();
                     break;
                 case 6:
+                    customer6.DecideToGo();
                     break;
                 case 7:
+                    customer7.DecideToGo();
                     break;
             }
         }

@@ -20,6 +20,10 @@ namespace LemonadeStand
         public double item2Amount = 0;
         public double item3Amount = 0;
         public double item4Amount = 0;
+        public double item1DeductedAmount;
+        public double item2DeductedAmount;
+        public double item3DeductedAmount;
+        public double item4DeductedAmount;
         public double MerchandiseSold = 0;
         Store store;
 
@@ -44,6 +48,22 @@ namespace LemonadeStand
                 item3name,
                 item4name
             };
+        }
+        public void DeductItem1InventoryAmount()
+        {
+            item1Amount -= item1DeductedAmount;
+        }
+        public void DeductItem2InventoryAmount()
+        {
+            item1Amount -= item2DeductedAmount;
+        }
+        public void DeductItem3InventoryAmount()
+        {
+            item1Amount -= item3DeductedAmount;
+        }
+        public void DeductItem4InventoryAmount()
+        {
+            item1Amount -= item4DeductedAmount;
         }
         public void DeductItem1InventorySingle()
         {

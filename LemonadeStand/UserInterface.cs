@@ -77,7 +77,7 @@ namespace LemonadeStand
         }
         public void DisplayPlayer1Money()
         {
-            Console.WriteLine(Environment.NewLine + player.name + " currently has " + player.piggyBank.money + " in the piggybank" );
+            Console.WriteLine(Environment.NewLine + player.name + " currently has " + player.piggyBank.money + "$ in the piggybank" );
         }
         public void DisplayStoreOptions()
         {
@@ -134,7 +134,7 @@ namespace LemonadeStand
         }
         public void DisplayCostOfProduct()
         {
-            Console.WriteLine("The current cost for each one of your products is" + player.recipeBook.cost + ".");
+            Console.WriteLine("The current cost for each one of your products is " + player.recipeBook.cost + "$.");
         }
         public void DisplayPlayerRecipe()
         {
